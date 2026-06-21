@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <title>Contact Us - ISKCON Padyatra</title>
+    
+    <!-- Bootstrap & Premium Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&amp;family=Poppins:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@700&amp;display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           🛠️ ENTERPRISE PREMIUM STYLES
+           ========================================= */
+        :root {
+            --primary: #FF9933;       
+            --secondary: #4a2c2a;     
+            --bg-color: #f4f5f7;      
+            --card-bg: #ffffff;       
+            --text-color: #1e293b;       
+            --text-muted: #64748b;
+            --danger-color: #ef4444;
+            --border-color: #e2e8f0;
+            --ui-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08);
+            --transition-speed: 0.3s;
+        }
+        
+        [data-theme="dark"] {
+            --primary: #FF9933; 
+            --secondary: #140804; 
+            --bg-color: #0f172a; 
+            --card-bg: #1e293b; 
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --ui-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.6);
+        }
+
+        body { 
+            background-color: var(--bg-color); 
+            font-family: 'Poppins', sans-serif; 
+            color: var(--text-color); 
+            transition: background-color var(--transition-speed), color var(--transition-speed); 
+            margin: 0; 
+            padding-bottom: 40px;
+            -webkit-tap-highlight-color: transparent; 
+            background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+        .progress-container {
+            width: 100%; height: 4px; background: rgba(0,0,0,0.1); position: fixed; top: 68px; z-index: 1001;
+        }
+        .progress-bar {
+            height: 4px; background: #ffffff; width: 0%; box-shadow: 0 0 10px rgba(255,255,255,0.8);
+        }
+
+        .top-nav {
+            background: linear-gradient(90deg, #d84315, var(--primary), #ef6c00);
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 4px 20px rgba(230, 81, 0, 0.5);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        .back-btn {
+            color: white; font-size: 1.3rem; text-decoration: none; transition: 0.2s;
+            display: flex; align-items: center; justify-content: center;
+            width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .back-btn:active { transform: scale(0.85); background: rgba(255,255,255,0.4); }
+        .page-title {
+            font-family: 'Space Grotesk', sans-serif; color: white; font-size: 1.3rem; font-weight: 700; margin: 0; letter-spacing: 0.5px;
+        }
+
+        .policy-header {
+            background: linear-gradient(135deg, #111827 0%, #374151 100%);
+            padding: 110px 20px 60px 20px; 
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid var(--primary);
+        }
+        .header-bg-glow {
+            position: absolute; top: 0; left: 50%; width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(255, 153, 51, 0.1) 0%, transparent 70%);
+            transform: translate(-50%, -50%); pointer-events: none;
+        }
+        .header-title {
+            font-family: 'Cinzel', serif; font-size: 2.2rem; font-weight: 800; color: #ffcc80; margin: 0 0 10px 0; position: relative; z-index: 1; text-transform: uppercase;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6); letter-spacing: 2px;
+        }
+        .header-subtitle {
+            font-size: 1rem; color: #9ca3af; position: relative; z-index: 1; font-weight: 400; letter-spacing: 1px;
+        }
+
+        .legal-metadata {
+            display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 20px; position: relative; z-index: 1;
+        }
+        .meta-badge {
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+            color: #d1d5db; padding: 6px 12px; border-radius: 30px; font-size: 0.75rem; font-family: monospace;
+            backdrop-filter: blur(4px); display: flex; align-items: center; gap: 6px;
+        }
+        .meta-badge i { color: var(--primary); }
+
+        .policy-container {
+            max-width: 900px;
+            margin: -30px auto 40px auto;
+            position: relative;
+            z-index: 2;
+            padding: 0 15px;
+        }
+
+        .legal-section-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: var(--ui-shadow);
+            padding: 25px 30px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .legal-section-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px -10px rgba(255, 153, 51, 0.15);
+            border-color: rgba(255, 153, 51, 0.3);
+        }
+
+        .p-section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--primary);
+            border-bottom: 2px solid rgba(255, 153, 51, 0.15);
+            padding-bottom: 12px;
+            margin-top: 0;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-number {
+            background: rgba(255, 153, 51, 0.1); color: var(--primary);
+            width: 32px; height: 32px; display: flex; justify-content: center; align-items: center;
+            border-radius: 8px; font-size: 1rem; font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+        }
+
+        .p-text {
+            font-size: 0.95rem; line-height: 1.8; color: var(--text-color); margin-bottom: 0; text-align: justify; font-weight: 400; opacity: 0.9;
+        }
+
+        .profile-contact-card {
+            background-color: var(--bg-color);
+            border: 1.5px solid var(--border-color);
+            border-radius: 14px;
+            padding: 20px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+        .profile-contact-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 25px rgba(255, 153, 51, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .contact-form-custom .form-control {
+            background-color: var(--bg-color) !important;
+            border: 1.5px solid var(--border-color) !important;
+            color: var(--text-color) !important;
+            border-radius: 10px;
+            padding: 12px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        .contact-form-custom .form-control:focus {
+            border-color: var(--primary) !important;
+            box-shadow: 0 0 10px rgba(255, 153, 51, 0.2) !important;
+        }
+        .btn-submit-custom {
+            background: linear-gradient(90deg, var(--primary), #ef6c00);
+            border: none;
+            color: #130906;
+            font-weight: 700;
+            padding: 12px 25px;
+            border-radius: 10px;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        .btn-submit-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 153, 51, 0.4);
+        }
+
+        .support-footer-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 40px 0 20px 0;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--ui-shadow);
+        }
+        .support-footer-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 10px;
+            display: flex; justify-content: center; align-items: center; gap: 8px;
+        }
+        .support-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .tech-tags-small {
+            display: flex; justify-content: center; gap: 15px; margin-bottom: 20px;
+            font-size: 0.75rem; color: var(--text-muted);
+        }
+        .tech-tags-small span {
+            display: flex; align-items: center; gap: 5px;
+        }
+        .action-btn-outline {
+            background: transparent;
+            color: #25d366 !important;
+            border: 2px solid #25d366;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.15);
+        }
+        .action-btn-outline:hover {
+            background: #25d366;
+            color: white !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i></a>
+        <h1 class="page-title" id="nav-title">Contact Us</h1>
+        <select id="lang-select-policy" onchange="changeLanguage(this.value)" class="ms-auto" style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 6px 12px; font-size: 0.8rem; focus: outline-none;">
+            <option value="en" style="background:#1f0802; color:white;">English</option>
+            <option value="hi" style="background:#1f0802; color:white;">हिन्दी</option>
+            <option value="mr" style="background:#1f0802; color:white;">मराठी</option>
+        </select>
+    </div>
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    <header class="policy-header">
+        <div class="header-bg-glow"></div>
+        <h1 class="header-title" id="header-title-text"><i class="fas fa-envelope me-2"></i> Contact Us</h1>
+        <p class="header-subtitle" id="header-subtitle-text">Official Communications &amp; Tech Channels</p>
+        
+        <div class="legal-metadata">
+            <span class="meta-badge" id="badge-doc-id"><i class="fas fa-code-commit"></i> Doc ID: ISK-PAD-CU-V2.6</span>
+            <span class="meta-badge" id="badge-date"><i class="fas fa-calendar-check"></i> Effective: 2026 Edition</span>
+            <span class="meta-badge"><i class="fab fa-google-play"></i> Play Store Verified</span>
+        </div>
+    </header>
+
+    <main class="policy-container">
+
+        <div class="legal-section-card" style="background: linear-gradient(to right, var(--card-bg), rgba(255,153,51,0.05)); border-left: 4px solid var(--primary);">
+            <p class="p-text" id="welcome-text-msg" style="font-weight: 500;">If you have any synchronization issues, data removal requests under Google Play guidelines, or other system performance feedback, please reach out to our active communication channels below.</p>
+        </div>
+
+        <div class="legal-section-card">
+            <h2 class="p-section-title" id="sec-channels-title"><div class="section-number">1</div> Devotional Support Channels</h2>
+            <p class="p-text" id="sec-channels-desc">Our dedicated systems management ensures that all devotee technical questions are addressed securely, promptly, and professionally through designated technical tiers:</p>
+            
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="profile-contact-card" style="border-left: 4px solid var(--primary); padding: 25px;">
+                        <h5 style="color: var(--primary);"><i class="fab fa-whatsapp me-2"></i> WhatsApp Support</h5>
+                        <p class="mb-3" style="font-size: 0.85rem;" id="contact-wa-desc">Connect directly with our chief systems architect Dev Santosh for technical synchronization support.</p>
+                        <a href="https://wa.me/919561160799?text=Hare%20Krishna%20Dev%20Santosh!%20I%20need%20technical%20support%20for%20the%20ISKCON%20Padyatra%20App." target="_blank" class="btn btn-outline-success w-100" style="border-radius: 8px;"><i class="fab fa-whatsapp me-1"></i> WhatsApp Only</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="profile-contact-card" style="border-left: 4px solid var(--primary); padding: 25px;">
+                        <h5 style="color: var(--primary);"><i class="fas fa-envelope-open-text me-2"></i> Email Correspondence</h5>
+                        <p class="mb-3" style="font-size: 0.85rem;" id="contact-email-desc">Write to our administration regarding data deletion queries or generic developer coordination.</p>
+                        <a href="mailto:om12grt@gmail.com" class="btn btn-outline-warning w-100" style="border-radius: 8px; color: var(--primary);"><i class="fas fa-envelope me-1"></i> om12grt@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="legal-section-card">
+            <h2 class="p-section-title" id="sec-form-title"><div class="section-number">2</div> Send Secure Devotional Message</h2>
+            <p class="p-text" id="sec-form-desc">If you wish to report inappropriate content on the Tribute Wall, ask for database synchronization support, or request coordinate corrections on maps, submit this verified feedback form:</p>
+            
+            <div class="p-4" style="background-color: var(--bg-color); border-radius: 14px; border: 1.5px solid var(--border-color);">
+                <h5 style="color: var(--primary); font-family: 'Cinzel', serif;" id="form-title">Send Us a Secure Message</h5>
+                <form class="contact-form-custom mt-3" onsubmit="event.preventDefault(); alert('Message sent with devotion!');">
+                    <input type="text" class="form-control" placeholder="Your Name / Description *" required id="form-ph-name">
+                    <input type="text" class="form-control" placeholder="Your Location / City, Country *" required id="form-ph-location">
+                    <textarea class="form-control" rows="4" placeholder="Write your heartfelt message here... *" required id="form-ph-msg"></textarea>
+                    <button type="submit" class="btn-submit-custom" id="btn-form-submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="legal-section-card">
+            <h2 class="p-section-title" id="sec-address-title"><div class="section-number">3</div> Official Address &amp; Response SLA</h2>
+            <p class="p-text" id="sec-address-desc">For formal postal communications, notices, or official documentation, please write to our administrative coordinates: <br><br>
+            <b>• ISKCON Padyatra Ministry:</b> ISKCON Pune, Maharashtra, India. <br>
+            <b>• Response SLA:</b> All digital feedback and data deletion requests submitted via our email channel are processed and verified within 24 to 48 hours in strict accordance with the Google Play Developer Distribution Policy.</p>
+        </div>
+
+        <div class="support-footer-card">
+            <h3 id="footer-support-head"><i class="fas fa-shield-alt text-success"></i> Technical App Support</h3>
+            <p class="support-text" id="footer-support-desc">For mobile application technical configurations, database synchronization requests, or system-related inquiries, please connect directly with our chief systems architect via WhatsApp chat.</p>
+            
+            <div class="tech-tags-small">
+                <span><i class="fas fa-copyright"></i> Architecture</span>
+                <span><i class="fas fa-server"></i> Cloud Optimized</span>
+                <span><i class="fas fa-network-wired"></i> Zero-Delay CDN</span>
+            </div>
+
+            <a href="https://wa.me/919561160799?text=Hare%20Krishna%20Dev%20Santosh!%20I%20need%20technical%20support%20for%20the%20ISKCON%20Padyatra%20App." target="_blank" class="action-btn-outline" id="btn-wa-support">
+                <i class="fab fa-whatsapp"></i> Chat with Dev Santosh (WhatsApp Only - No Call)
+            </a>
+        </div>
+
+    </main>
+
+    <footer style="text-align: center; padding: 20px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;" id="footer-copyright-text">
+        © 2026 ISKCON Padyatra Ministry. All Rights Reserved. <br>
+        Designed &amp; Maintained with devotion.
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+        //<![CDATA[
+        const safeStorage = {
+            getItem(key) {
+                try { return localStorage.getItem(key); } catch (e) { return this[key] || null; }
+            },
+            setItem(key, val) {
+                try { localStorage.setItem(key, val); } catch (e) { this[key] = val; }
+            }
+        };
+
+        const contactDict = {
+            en: {
+                navTitle: "Contact Us",
+                headerTitleText: "<i class='fas fa-envelope me-2'></i> Contact Us",
+                headerSubtitleText: "Official Communications &amp; Tech Channels",
+                badgeDocId: "<i class='fas fa-code-commit'></i> Doc ID: ISK-PAD-CU-V2.6",
+                badgeDate: "<i class='fas fa-calendar-check'></i> Effective: 2026 Edition",
+                welcomeText: "If you have any synchronization issues, data removal requests under Google Play guidelines, or other system performance feedback, please reach out to our active communication channels below.",
+                secChannelsTitle: "<div class='section-number'>1</div> Devotional Support Channels",
+                secChannelsDesc: "Our dedicated systems management ensures that all devotee technical questions are addressed securely, promptly, and professionally through designated technical tiers:",
+                contactWaDesc: "Connect directly with our chief systems architect Dev Santosh for technical synchronization support.",
+                contactEmailDesc: "Write to our administration regarding data deletion queries or generic developer coordination.",
+                secFormTitle: "<div class='section-number'>2</div> Send Secure Devotional Message",
+                secFormDesc: "If you wish to report inappropriate content on the Tribute Wall, ask for database synchronization support, or request coordinate corrections on maps, submit this verified feedback form:",
+                formTitle: "Send Us a Secure Message",
+                formPhName: "Your Name / Description *",
+                formPhLocation: "Your Location / City, Country *",
+                formPhMsg: "Write your heartfelt message here... *",
+                btnFormSubmit: "Send Message",
+                secAddressTitle: "<div class='section-number'>3</div> Official Address &amp; Response SLA",
+                secAddressDesc: "For formal postal communications, notices, or official documentation, please write to our administrative coordinates: <br><br><b>• ISKCON Padyatra Ministry:</b> ISKCON Pune, Maharashtra, India. <br><br><b>• Response SLA:</b> All digital feedback, support queries, and data deletion requests submitted via our email channel are processed, verified, and resolved within 24 to 48 hours in strict accordance with the Google Play Developer Distribution Policy. We are fully committed to protecting your privacy and ensuring a highly secure spiritual experience for our global congregation.",
+                footerSupportHead: "<i class='fas fa-shield-alt text-success'></i> Technical App Support",
+                footerSupportDesc: "For mobile application technical configurations, database synchronization requests, or system-related inquiries, please connect directly with our chief systems architect via WhatsApp chat.",
+                btnWaSupport: "<i class='fab fa-whatsapp'></i> Chat with Dev Santosh (WhatsApp Only - No Call)",
+                footerCopyright: "© 2026 ISKCON Padyatra Ministry. All Rights Reserved. <br> Designed &amp; Maintained with devotion."
+            },
+            hi: {
+                navTitle: "संपर्क करें",
+                headerTitleText: "<i class='fas fa-envelope me-2'></i> संपर्क करें",
+                headerSubtitleText: "आधिकारिक संचार और तकनीकी चैनल",
+                badgeDocId: "<i class='fas fa-code-commit'></i> दस्तावेज़ आईडी: ISK-PAD-CU-V2.6",
+                badgeDate: "<i class='fas fa-calendar-check'></i> प्रभावी: २०२६ संस्करण",
+                welcomeText: "यदि आपके पास कोई सिंक्रनाइज़ेशन समस्या, गूगल प्ले दिशानिर्देशों के तहत डेटा हटाने के अनुरोध, या सिस्टम प्रदर्शन फीडबैक है, तो कृपया नीचे दिए गए हमारे सक्रिय संचार चैनलों पर संपर्क करें।",
+                secChannelsTitle: "<div class='section-number'>1</div> समर्पित सहायता चैनल",
+                secChannelsDesc: "हमारा समर्पित सिस्टम प्रबंधन यह सुनिश्चित करता है कि भक्तों के सभी तकनीकी प्रश्नों का सुरक्षित, त्वरित और पेशेवर तरीके से समाधान किया जाए:",
+                contactWaDesc: "तकनीकी सिंक्रनाइज़ेशन सहायता के लिए हमारे मुख्य सिस्टम आर्किटेक्ट देव संतोष के साथ सीधे चैट करें।",
+                contactEmailDesc: "डेटा विलोपन या डेवलपर समन्वय के संबंध में हमारे प्रशासन को सीधे ईमेल करें।",
+                secFormTitle: "<div class='section-number'>2</div> सुरक्षित संदेश भेजें",
+                secFormDesc: "यदि आप ट्रिब्यूट वॉल पर अवांछित सामग्री की रिपोर्ट करना चाहते हैं, डेटा सिंक सहायता चाहते हैं, या मानचित्रों पर स्थान सुधार का अनुरोध करना चाहते हैं, तो यह सत्यापित फ़ॉर्म सबमिट करें:",
+                formTitle: "हमें एक सुरक्षित संदेश भेजें",
+                formPhName: "आपका नाम / विवरण *",
+                formPhLocation: "आपका स्थान / शहर, देश *",
+                formPhMsg: "अपना संदेश यहाँ लिखें... *",
+                btnFormSubmit: "संदेश भेजें",
+                secAddressTitle: "<div class='section-number'>3</div> आधिकारिक पता और रिस्पॉन्स SLA",
+                secAddressDesc: "औपचारिक पत्राचार, सूचनाओं या आधिकारिक दस्तावेज़ों के लिए, कृपया हमारे प्रशासनिक पते पर लिखें: <br><br><b>• इस्कॉन पदयात्रा मंत्रालय:</b> इस्कॉन पुणे, महाराष्ट्र, भारत। <br><br><b>• रिस्पॉन्स SLA:</b> हमारे ईमेल चैनल के माध्यम से सबमिट किए गए सभी डिजिटल फीडबैक, सहायता प्रश्न और डेटा विलोपन अनुरोधों को गूगल प्ले डेवलपर नीतियों के तहत २४ से ४८ घंटों के भीतर सत्यापित और संसाधित किया जाता है। हम आपकी गोपनीयता की रक्षा करने और वैश्विक भक्तों को सुरक्षित आध्यात्मिक अनुभव प्रदान करने के लिए पूरी तरह प्रतिबद्ध हैं।",
+                footerSupportHead: "<i class='fas fa-shield-alt text-success'></i> तकनीकी ऐप सहायता",
+                footerSupportDesc: "मोबाइल एप्लिकेशन तकनीकी कॉन्फ़िगरेशन, डेटाबेस सिंक्रनाइज़ेशन अनुरोधों या सिस्टम से संबंधित पूछताछ के लिए, कृपया हमारे मुख्य सिस्टम आर्किटेक्ट से व्हाट्सएप चैट के माध्यम से सीधे जुड़ें।",
+                btnWaSupport: "<i class='fab fa-whatsapp'></i> देव संतोष के साथ चैट करें (केवल व्हाट्सएप - कोई कॉल नहीं)",
+                footerCopyright: "© 2026 इस्कॉन पदयात्रा मंत्रालय। सर्वाधिकार सुरक्षित। <br> भक्ति भाव से डिज़ाइन और संचालित।"
+            },
+            mr: {
+                navTitle: "संपर्क साधा",
+                headerTitleText: "<i class='fas fa-envelope me-2'></i> संपर्क साधा",
+                headerSubtitleText: "अधिकृत संपर्क आणि तांत्रिक सहाय्य",
+                badgeDocId: "<i class='fas fa-code-commit'></i> दस्तऐवज आयडी: ISK-PAD-CU-V2.6",
+                badgeDate: "<i class='fas fa-calendar-check'></i> प्रभावी: २०२६ आवृत्ती",
+                welcomeText: "जर आपल्याला सिंक्रोनाइझेशन संदर्भात तांत्रिक अडचण असेल, गुगल प्ले नियमांनुसार डेटा हटवायचा असेल किंवा काही अभिप्राय असेल, तर खालील तांत्रिक चॅनेलद्वारे आमच्याशी संपर्क साधा.",
+                secChannelsTitle: "<div class='section-number'>1</div> तांत्रिक सहाय्य चॅनेल",
+                secChannelsDesc: "आमचे समर्पित सिस्टीम व्यवस्थापन भक्तांच्या सर्व तांत्रिक प्रश्नांचे सुरक्षितपणे आणि वेळेत निराकरण करण्याचे काम करते:",
+                contactWaDesc: "तांत्रिक मदतीसाठी आमचे मुख्य सिस्टीम आर्किटेक्ट देव संतोष यांच्याशी थेट व्हॉट्सॲपवर संपर्क साधा.",
+                contactEmailDesc: "डेटा हटवण्याच्या विनंतीसाठी किंवा इतर चौकशीसाठी आमच्या प्रशासनाला थेट ईमेल करा.",
+                secFormTitle: "<div class='section-number'>2</div> सुरक्षित संदेश पाठवा",
+                secFormDesc: "जर आपल्याला वॉलवरील अयोग्य मजकुराची तक्रार करायची असेल, डेटा सिंक करायचा असेल किंवा नकाशातील स्थान सुधारून हवे असेल, तर हा सुरक्षित फॉर्म भरा:",
+                formTitle: "आम्हाला सुरक्षित संदेश पाठवा",
+                formPhName: "तुमचे नाव / वर्णन *",
+                formPhLocation: "तुमचे स्थान / शहर, देश *",
+                formPhMsg: "तुमचा संदेश येथे लिहा... *",
+                btnFormSubmit: "संदेश पाठवा",
+                secAddressTitle: "<div class='section-number'>3</div> अधिकृत पत्ता आणि प्रतिसाद SLA",
+                secAddressDesc: "औपचारिक पत्रव्यवहार, सूचना किंवा अधिकृत दस्तऐवजांसाठी, कृपया आमच्या प्रशासकीय पत्त्यावर लिहा: <br><br><b>• इस्कॉन पदयात्रा मंत्रालय:</b> इस्कॉन पुणे, महाराष्ट्र, भारत. <br><br><b>• प्रतिसाद SLA:</b> आमच्या ईमेल चॅनेलद्वारे सबमिट केलेले सर्व फीडबॅक आणि डेटा विलोपन विनंत्या गुगल प्ले नियमांनुसार २४ ते ४८ तासांच्या आत तपासल्या आणि पूर्ण केल्या जातात. आम्ही आपल्या गोपनीयतेचे रक्षण करण्यास आणि जगभरातील भक्तांना सुरक्षित भक्तीचा अनुभव देण्यास वचनबद्ध आहोत.",
+                footerSupportHead: "<i class='fas fa-shield-alt text-success'></i> तांत्रिक ॲप सहाय्यता",
+                footerSupportDesc: "मोबाईल ॲप्लिकेशन तांत्रिक कॉन्फिगरेशन, डेटाबेस सिंक्रोनाइझेशन विनंती किंवा सिस्टमशी संबंधित चौकशीसाठी, कृपया आमच्या मुख्य सिस्टम आर्किटेक्टशी थेट व्हॉट्सॲपद्वारे संपर्क साधा.",
+                btnWaSupport: "<i class='fab fa-whatsapp'></i> देव संतोष यांच्याशी चॅट करा (फक्त व्हॉट्सॲप - कॉल करू नये)",
+                footerCopyright: "© 2026 इस्कॉन पदयात्रा मंत्रालय. सर्व हक्क राखीव. <br> भक्ती भावाने डिझाइन आणि संचालित."
+            }
+        };
+
+        let activeLanguage = safeStorage.getItem('padyatra_lang') || 'en';
+
+        const dropdownEl = document.getElementById('lang-select-policy');
+        if (dropdownEl) {
+            dropdownEl.value = activeLanguage;
+        }
+
+        function changeLanguage(lang) {
+            activeLanguage = lang;
+            safeStorage.setItem('padyatra_lang', lang);
+            localizeUI();
+        }
+
+        function localizeUI() {
+            const d = contactDict[activeLanguage];
+            document.getElementById('nav-title').textContent = d.navTitle;
+            document.getElementById('header-title-text').innerHTML = d.headerTitleText;
+            document.getElementById('header-subtitle-text').textContent = d.headerSubtitleText;
+            document.getElementById('badge-doc-id').innerHTML = d.badgeDocId;
+            document.getElementById('badge-date').innerHTML = d.badgeDate;
+            document.getElementById('welcome-text-msg').innerHTML = d.welcomeText;
+            document.getElementById('sec-channels-title').innerHTML = d.secChannelsTitle;
+            document.getElementById('sec-channels-desc').textContent = d.secChannelsDesc;
+            document.getElementById('contact-wa-desc').textContent = d.contactWaDesc;
+            document.getElementById('contact-email-desc').textContent = d.contactEmailDesc;
+            document.getElementById('sec-form-title').innerHTML = d.secFormTitle;
+            document.getElementById('sec-form-desc').textContent = d.secFormDesc;
+            document.getElementById('form-title').textContent = d.formTitle;
+            document.getElementById('btn-form-submit').textContent = d.btnFormSubmit;
+            document.getElementById('sec-address-title').innerHTML = d.secAddressTitle;
+            document.getElementById('sec-address-desc').innerHTML = d.secAddressDesc;
+            document.getElementById('footer-support-head').innerHTML = d.footerSupportHead;
+            document.getElementById('footer-support-desc').textContent = d.footerSupportDesc;
+            document.getElementById('btn-wa-support').innerHTML = d.btnWaSupport;
+            document.getElementById('footer-copyright-text').innerHTML = d.footerCopyright;
+
+            document.getElementById('form-ph-name').placeholder = d.formPhName;
+            document.getElementById('form-ph-location').placeholder = d.formPhLocation;
+            document.getElementById('form-ph-msg').placeholder = d.formPhMsg;
+        }
+
+        localizeUI();
+
+        if(localStorage.getItem('theme') === 'dark') {
+            document.body.setAttribute('data-theme', 'dark');
+            document.documentElement.style.setProperty('--card-bg', '#1e293b');
+            document.documentElement.style.setProperty('--bg-color', '#0f172a');
+            document.documentElement.style.setProperty('--text-color', '#f8fafc');
+            document.documentElement.style.setProperty('--text-muted', '#94a3b8');
+            document.documentElement.style.setProperty('--border-color', '#334155');
+        }
+
+        window.onscroll = function() { updateProgressBar() };
+        function updateProgressBar() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+        //]]>
+    </script>
+</body>
+</html>
