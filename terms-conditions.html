@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <title>Terms &amp; Conditions - ISKCON Padyatra</title>
+    
+    <!-- Bootstrap & Premium Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&amp;family=Poppins:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@700&amp;display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           🛠️ ENTERPRISE PREMIUM STYLES
+           ========================================= */
+        :root {
+            --primary: #FF9933;       
+            --secondary: #4a2c2a;     
+            --bg-color: #f4f5f7;      
+            --card-bg: #ffffff;       
+            --text-color: #1e293b;       
+            --text-muted: #64748b;
+            --danger-color: #ef4444;
+            --border-color: #e2e8f0;
+            --ui-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08);
+            --transition-speed: 0.3s;
+        }
+        
+        [data-theme="dark"] {
+            --primary: #FF9933; 
+            --secondary: #140804; 
+            --bg-color: #0f172a; 
+            --card-bg: #1e293b; 
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --ui-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.6);
+        }
+
+        body { 
+            background-color: var(--bg-color); 
+            font-family: 'Poppins', sans-serif; 
+            color: var(--text-color); 
+            transition: background-color var(--transition-speed), color var(--transition-speed); 
+            margin: 0; 
+            padding-bottom: 40px;
+            -webkit-tap-highlight-color: transparent; 
+            background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+        .progress-container {
+            width: 100%; height: 4px; background: rgba(0,0,0,0.1); position: fixed; top: 68px; z-index: 1001;
+        }
+        .progress-bar {
+            height: 4px; background: #ffffff; width: 0%; box-shadow: 0 0 10px rgba(255,255,255,0.8);
+        }
+
+        .top-nav {
+            background: linear-gradient(90deg, #d84315, var(--primary), #ef6c00);
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 4px 20px rgba(230, 81, 0, 0.5);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        .back-btn {
+            color: white; font-size: 1.3rem; text-decoration: none; transition: 0.2s;
+            display: flex; align-items: center; justify-content: center;
+            width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .back-btn:active { transform: scale(0.85); background: rgba(255,255,255,0.4); }
+        .page-title {
+            font-family: 'Space Grotesk', sans-serif; color: white; font-size: 1.3rem; font-weight: 700; margin: 0; letter-spacing: 0.5px;
+        }
+
+        .policy-header {
+            background: linear-gradient(135deg, #111827 0%, #374151 100%);
+            padding: 110px 20px 60px 20px; 
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid var(--primary);
+        }
+        .header-bg-glow {
+            position: absolute; top: 0; left: 50%; width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(255, 153, 51, 0.1) 0%, transparent 70%);
+            transform: translate(-50%, -50%); pointer-events: none;
+        }
+        .header-title {
+            font-family: 'Cinzel', serif; font-size: 2.2rem; font-weight: 800; color: #ffcc80; margin: 0 0 10px 0; position: relative; z-index: 1; text-transform: uppercase;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6); letter-spacing: 2px;
+        }
+        .header-subtitle {
+            font-size: 1rem; color: #9ca3af; position: relative; z-index: 1; font-weight: 400; letter-spacing: 1px;
+        }
+
+        .legal-metadata {
+            display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 20px; position: relative; z-index: 1;
+        }
+        .meta-badge {
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+            color: #d1d5db; padding: 6px 12px; border-radius: 30px; font-size: 0.75rem; font-family: monospace;
+            backdrop-filter: blur(4px); display: flex; align-items: center; gap: 6px;
+        }
+        .meta-badge i { color: var(--primary); }
+
+        .policy-container {
+            max-width: 900px;
+            margin: -30px auto 40px auto;
+            position: relative;
+            z-index: 2;
+            padding: 0 15px;
+        }
+
+        .legal-section-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: var(--ui-shadow);
+            padding: 25px 30px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .legal-section-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px -10px rgba(255, 153, 51, 0.15);
+            border-color: rgba(255, 153, 51, 0.3);
+        }
+
+        .p-section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--primary);
+            border-bottom: 2px solid rgba(255, 153, 51, 0.15);
+            padding-bottom: 12px;
+            margin-top: 0;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-number {
+            background: rgba(255, 153, 51, 0.1); color: var(--primary);
+            width: 32px; height: 32px; display: flex; justify-content: center; align-items: center;
+            border-radius: 8px; font-size: 1rem; font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+        }
+
+        .p-text {
+            font-size: 0.95rem; line-height: 1.8; color: var(--text-color); margin-bottom: 20px; text-align: justify; font-weight: 400; opacity: 0.9;
+        }
+
+        .strict-warning-box {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.05), rgba(239, 68, 68, 0.02));
+            padding: 20px;
+            border-radius: 12px;
+            margin: 25px 0 10px 0;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            box-shadow: 0 4px 20px rgba(239, 68, 68, 0.1);
+        }
+        .strict-warning-box::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px;
+            background: repeating-linear-gradient(45deg, #ef4444, #ef4444 10px, #2b2b2b 10px, #2b2b2b 20px);
+        }
+
+        .strict-warning-box h4 {
+            color: var(--danger-color); font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; font-weight: 800; margin-bottom: 12px;
+            display: flex; align-items: center; letter-spacing: 1px; text-transform: uppercase;
+        }
+        .strict-warning-box p {
+            margin: 0; font-size: 0.9rem; color: var(--text-color); font-weight: 500; line-height: 1.7;
+        }
+
+        .legal-highlight {
+            background: rgba(255, 153, 51, 0.08);
+            padding: 18px;
+            border-radius: 10px;
+            border-left: 5px solid var(--primary);
+            margin-top: 15px;
+        }
+
+        .support-footer-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 40px 0 20px 0;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--ui-shadow);
+        }
+        .support-footer-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 10px;
+            display: flex; justify-content: center; align-items: center; gap: 8px;
+        }
+        .support-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .tech-tags-small {
+            display: flex; justify-content: center; gap: 15px; margin-bottom: 20px;
+            font-size: 0.75rem; color: var(--text-muted);
+        }
+        .tech-tags-small span {
+            display: flex; align-items: center; gap: 5px;
+        }
+        .action-btn-outline {
+            background: transparent;
+            color: #25d366 !important;
+            border: 2px solid #25d366;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.15);
+        }
+        .action-btn-outline:hover {
+            background: #25d366;
+            color: white !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i></a>
+        <h1 class="page-title" id="nav-title">Terms &amp; Conditions</h1>
+        <select id="lang-select-policy" onchange="changeLanguage(this.value)" class="ms-auto" style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 6px 12px; font-size: 0.8rem; focus: outline-none;">
+            <option value="en" style="background:#1f0802; color:white;">English</option>
+            <option value="hi" style="background:#1f0802; color:white;">हिन्दी</option>
+            <option value="mr" style="background:#1f0802; color:white;">मराठी</option>
+        </select>
+    </div>
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    <header class="policy-header">
+        <div class="header-bg-glow"></div>
+        <h1 class="header-title" id="header-title-text"><i class="fas fa-file-contract me-2"></i> Terms &amp; Conditions</h1>
+        <p class="header-subtitle" id="header-subtitle-text">Official User Terms &amp; Device Policies</p>
+        
+        <div class="legal-metadata">
+            <span class="meta-badge" id="badge-doc-id"><i class="fas fa-code-commit"></i> Doc ID: ISK-PAD-TC-V2.6</span>
+            <span class="meta-badge" id="badge-date"><i class="fas fa-calendar-check"></i> Effective: 2026 Edition</span>
+            <span class="meta-badge"><i class="fab fa-google-play"></i> Play Store Verified</span>
+        </div>
+    </header>
+
+    <main class="policy-container">
+
+        <div class="legal-section-card" style="background: linear-gradient(to right, var(--card-bg), rgba(255,153,51,0.05)); border-left: 4px solid var(--primary);">
+            <p class="p-text" id="welcome-text-msg" style="font-weight: 500;">By downloading, installing, or interacting with the official <b>ISKCON Padyatra Devotee Portal</b> mobile application, you unconditionally accept and agree to comply with the terms, requirements, and security declarations outlined in this legally binding agreement.</p>
+        </div>
+
+        <div class="legal-section-card">
+            <h2 class="p-section-title" id="sec-spoof-title"><div class="section-number">1</div> Security &amp; Anti-Spoofing Policies</h2>
+            <p class="p-text" id="sec-spoof-desc">To maintain the highest levels of coordination accuracy on our global maps, route progressions, and the Vyasa Puja tribute board, the following behaviors are strictly prohibited:</p>
+            
+            <div class="strict-warning-box">
+                <h4 id="warn-box-head"><i class="fas fa-shield-virus me-2"></i> Anti-GPS Spoofing &amp; Fake Coordinates Ban</h4>
+                <p id="warn-box-desc">
+                    The use of Fake GPS applications, mock coordinates configurations, emulator packages, or Virtual Private Networks (VPNs) to artificially manipulate location parameters is strictly forbidden.<br><br>
+                    <b>• Automatic Device Banning:</b> Any attempt to forge coordinates or spoof your physical distance from the Padyatra chariot to claim fake "My Joined Journey" stats or complete check-ins will result in an automatic, persistent, cryptographic ban of your unique device token from our active Firebase databases.<br>
+                    <b>• Absolute Protection:</b> Banned device tokens cannot be restored or appealed under any circumstances. This measure protects our databases and the integrity of the spiritual stats.
+                </p>
+            </div>
+        </div>
+
+        <div class="legal-section-card">
+            <h2 class="p-section-title" id="sec-ugc-title"><div class="section-number">2</div> User Generated Content &amp; Tribute Wall</h2>
+            <p class="p-text" id="sec-ugc-desc">Devotees voluntarily submitting prayers and wishes to the H.H. Lokanath Swami Maharaj Vyasa Puja Tribute Wall must adhere to strictly defined rules of community conduct:</p>
+            
+            <div class="legal-highlight">
+                <p class="p-text" id="device-tokens-desc" style="font-size: 0.9rem;">
+                    <b>• Tribute Submission Limits:</b> To prevent server overload and maintain database hygiene, our system enforces a strict limit of exactly 1 tribute submission per unique device token.<br><br>
+                    <b>• UGC Content Moderation:</b> Any user-submitted message containing inappropriate, political, non-devotional, commercial, promotional, or spam text will be flagged and deleted immediately. We maintain zero-tolerance for inappropriate content to strictly comply with Google Play Developer Program Policies on User Generated Content (UGC).
+                </p>
+            </div>
+        </div>
+
+        <div class="legal-section-card">
+            <h2 class="p-section-title" id="sec-intellect-title"><div class="section-number">3</div> Intellectual Property &amp; Media Streams</h2>
+            <p class="p-text" id="sec-intellect-desc">All proprietary digital assets available within our application—including, but not limited to, the real-time Live Darshan video streams (such as Sri Nitai Gauranga live streams), photographic media, map styling layers, administrative statistics, database structures, and copyrighted layout designs—remain the exclusive intellectual property of ISKCON IT Services and the ISKCON Padyatra Ministry. Unauthorized recording, commercial redistribution, scraping, or mirroring of these assets is strictly prohibited.</p>
+        </div>
+
+        <div class="legal-section-card">
+            <h2 class="p-section-title" id="sec-ads-title"><div class="section-number">4</div> Programmatic Ads &amp; CDN Operations</h2>
+            <p class="p-text" id="sec-ads-desc">To sustain our high-speed global server hosting, real-time edge databases, and zero-delay CDNs for millions of active concurrent users across 130+ countries, we integrate non-intrusive programmatic advertisement layers. By accepting these Terms, you acknowledge and agree to this hosting model. Devotees may configure secure Private DNS filters if they prefer an un-monetized UI.</p>
+        </div>
+
+        <div class="legal-section-card">
+            <h2 class="p-section-title" id="sec-liability-title"><div class="section-number">5</div> Limitation of Liability &amp; Jurisdiction</h2>
+            <p class="p-text" id="sec-liability-desc">The application is provided "as is" and "as available" without any warranties of any kind. Under no circumstances shall ISKCON IT Services or the ISKCON Padyatra Ministry be held liable for any data loss, device performance issues, or network charges incurred while using the tracking features. Any legal disputes arising out of these terms shall be subject to the exclusive jurisdiction of the courts of Pune, Maharashtra, India.</p>
+        </div>
+
+        <div class="support-footer-card">
+            <h3 id="footer-support-head"><i class="fas fa-shield-alt text-success"></i> Technical App Support</h3>
+            <p class="support-text" id="footer-support-desc">For mobile application technical configurations, database synchronization requests, or system-related inquiries, please connect directly with our chief systems architect via WhatsApp chat.</p>
+            
+            <div class="tech-tags-small">
+                <span><i class="fas fa-copyright"></i> Architecture</span>
+                <span><i class="fas fa-server"></i> Cloud Optimized</span>
+                <span><i class="fas fa-network-wired"></i> Zero-Delay CDN</span>
+            </div>
+
+            <a href="https://wa.me/919561160799?text=Hare%20Krishna%20Dev%20Santosh!%20I%20need%20technical%20support%20for%20the%20ISKCON%20Padyatra%20App." target="_blank" class="action-btn-outline" id="btn-wa-support">
+                <i class="fab fa-whatsapp"></i> Chat with Dev Santosh (WhatsApp Only - No Call)
+            </a>
+        </div>
+
+    </main>
+
+    <footer style="text-align: center; padding: 20px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;" id="footer-copyright-text">
+        © 2026 ISKCON Padyatra Ministry. All Rights Reserved. <br>
+        Designed &amp; Maintained with devotion.
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+        //<![CDATA[
+        const safeStorage = {
+            getItem(key) {
+                try { return localStorage.getItem(key); } catch (e) { return this[key] || null; }
+            },
+            setItem(key, val) {
+                try { localStorage.setItem(key, val); } catch (e) { this[key] = val; }
+            }
+        };
+
+        const termsDict = {
+            en: {
+                navTitle: "Terms & Conditions",
+                headerTitleText: "<i class='fas fa-file-contract me-2'></i> Terms &amp; Conditions",
+                headerSubtitleText: "Official User Terms & Device Policies",
+                badgeDocId: "<i class='fas fa-code-commit'></i> Doc ID: ISK-PAD-TC-V2.6",
+                badgeDate: "<i class='fas fa-calendar-check'></i> Effective: 2026 Edition",
+                welcomeText: "By downloading, installing, or interacting with the official <b>ISKCON Padyatra Devotee Portal</b> mobile application, you unconditionally accept and agree to comply with the terms, requirements, and security declarations outlined in this legally binding agreement.",
+                secSpoofTitle: "<div class='section-number'>1</div> Security &amp; Anti-Spoofing Policies",
+                secSpoofDesc: "To maintain the highest levels of coordination accuracy on our global maps, route progressions, and the Vyasa Puja tribute board, the following behaviors are strictly prohibited:",
+                warnBoxHead: "<i class='fas fa-shield-virus me-2'></i> Anti-GPS Spoofing &amp; Fake Coordinates Ban",
+                warnBoxDesc: "The use of Fake GPS applications, mock coordinates configurations, emulator packages, or Virtual Private Networks (VPNs) to artificially manipulate location parameters is strictly forbidden.<br><br><b>• Automatic Device Banning:</b> Any attempt to forge coordinates or spoof your physical distance from the Padyatra chariot to claim fake 'My Joined Journey' stats or complete check-ins will result in an automatic, persistent, cryptographic ban of your unique device token from our active Firebase databases.<br><b>• Absolute Protection:</b> Banned device tokens cannot be restored or appealed under any circumstances. This measure protects our databases and the integrity of the spiritual stats.",
+                secUgcTitle: "<div class='section-number'>2</div> User Generated Content &amp; Tribute Wall",
+                secUgcDesc: "Devotees voluntarily submitting prayers and wishes to the H.H. Lokanath Swami Maharaj Vyasa Puja Tribute Wall must adhere to strictly defined rules of community conduct:",
+                deviceTokensDesc: "<b>• Tribute Submission Limits:</b> To prevent server overload and maintain database hygiene, our system enforces a strict limit of exactly 1 tribute submission per unique device token.<br><br><b>• UGC Content Moderation:</b> Any user-submitted message containing inappropriate, political, non-devotional, commercial, promotional, or spam text will be flagged and deleted immediately. We maintain zero-tolerance for inappropriate content to strictly comply with Google Play Developer Program Policies on User Generated Content (UGC).",
+                secIntellectTitle: "<div class='section-number'>3</div> Intellectual Property &amp; Media Streams",
+                secIntellectDesc: "All proprietary digital assets available within our application—including, but not limited to, the real-time Live Darshan video streams (such as Sri Nitai Gauranga live streams), photographic media, map styling layers, administrative statistics, database structures, and copyrighted layout designs—remain the exclusive intellectual property of ISKCON IT Services and the ISKCON Padyatra Ministry. Unauthorized recording, commercial redistribution, scraping, or mirroring of these assets is strictly prohibited.",
+                secAdsTitle: "<div class='section-number'>4</div> Programmatic Ads &amp; CDN Operations",
+                secAdsDesc: "To sustain our high-speed global server hosting, real-time edge databases, and zero-delay CDNs for millions of active concurrent users across 130+ countries, we integrate non-intrusive programmatic advertisement layers. By accepting these Terms, you acknowledge and agree to this hosting model. Devotees may configure secure Private DNS filters if they prefer an un-monetized UI.",
+                secLiabilityTitle: "<div class='section-number'>5</div> Limitation of Liability &amp; Jurisdiction",
+                secLiabilityDesc: "The application is provided \"as is\" and \"as available\" without any warranties of any kind. Under no circumstances shall ISKCON IT Services or the ISKCON Padyatra Ministry be held liable for any data loss, device performance issues, or network charges incurred while using the tracking features. Any legal disputes arising out of these terms shall be subject to the exclusive jurisdiction of the courts of Pune, Maharashtra, India.",
+                footerSupportHead: "<i class='fas fa-shield-alt text-success'></i> Technical App Support",
+                footerSupportDesc: "For mobile application technical configurations, database synchronization requests, or system-related inquiries, please connect directly with our chief systems architect via WhatsApp chat.",
+                btnWaSupport: "<i class='fab fa-whatsapp'></i> Chat with Dev Santosh (WhatsApp Only - No Call)",
+                footerCopyright: "© 2026 ISKCON Padyatra Ministry. All Rights Reserved. <br> Designed &amp; Maintained with devotion."
+            },
+            hi: {
+                navTitle: "नियम और शर्तें",
+                headerTitleText: "<i class='fas fa-file-contract me-2'></i> नियम और शर्तें",
+                headerSubtitleText: "आधिकारिक नियम और डिवाइस नीतियां",
+                badgeDocId: "<i class='fas fa-code-commit'></i> दस्तावेज़ आईडी: ISK-PAD-TC-V2.6",
+                badgeDate: "<i class='fas fa-calendar-check'></i> प्रभावी: २०२६ संस्करण",
+                welcomeText: "आधिकारिक <b>इस्कॉन पदयात्रा भक्त पोर्टल</b> मोबाइल एप्लिकेशन को डाउनलोड, इंस्टॉल या उपयोग करके, आप इस कानूनी रूप से बाध्यकारी समझौते में उल्लिखित सभी शर्तों, आवश्यकताओं और सुरक्षा घोषणाओं को बिना किसी शर्त के स्वीकार करते हैं और उनका पालन करने के लिए सहमत होते हैं।",
+                secSpoofTitle: "<div class='section-number'>1</div> सुरक्षा और एंटी-स्पूपिंग नीतियां",
+                secSpoofDesc: "हमारे वैश्विक मानचित्रों, मार्ग प्रगति और व्यास पूजा श्रद्धांजलि बोर्ड पर उच्चतम स्तर की समन्वय सटीकता बनाए रखने के लिए, निम्नलिखित व्यवहार सख्त प्रतिबंधित हैं:",
+                warnBoxHead: "<i class='fas fa-shield-virus me-2'></i> एंटी-जीपीएस स्पूफिंग और फेक कोऑर्डिनेट्स प्रतिबंध",
+                warnBoxDesc: "स्थान निर्देशांकों में हेरफेर करने के लिए फेक जीपीएस अनुप्रयोगों, मॉक कोऑर्डिनेट्स कॉन्फ़िगरेशन, एमुलेटर पैकेज या वर्चुअल प्राइवेट नेटवर्क (वीपीएन) का उपयोग करना सख्त वर्जित है।<br><br><b>• स्वचालित डिवाइस प्रतिबंध:</b> चेक-इन आंकड़ों में हेरफेर करने के लिए पदयात्रा रथ से अपनी भौतिक दूरी का गलत प्रदर्शन करने के किसी भी प्रयास के परिणामस्वरूप हमारे सक्रिय फायरबेस डेटाबेस से आपके डिवाइस टोकन को स्वचालित रूप से और स्थायी रूप से प्रतिबंधित (Ban) कर दिया जाएगा।<br><b>• पूर्ण सुरक्षा:</b> हमारे डेटाबेस और आंकड़ों की सुरक्षा के लिए प्रतिबंधित डिवाइस टोकन को किसी भी परिस्थिति में बहाल नहीं किया जा सकता है।",
+                secUgcTitle: "<div class='section-number'>2</div> उपयोगकर्ता जनित सामग्री और श्रद्धांजलि",
+                secUgcDesc: "व्यास पूजा ट्रिब्यूट वॉल पर स्वेच्छा से अपनी प्रार्थनाएं भेजने वाले भक्तों को सामुदायिक आचरण के कड़े नियमों का पालन करना अनिवार्य है:",
+                deviceTokensDesc: "<b>• श्रद्धांजलि सबमिशन सीमाएं:</b> सर्वर ओवरलोड को रोकने और डेटाबेस स्वच्छता बनाए रखने के लिए, हमारी प्रणाली प्रति डिवाइस टोकन पर केवल १ सबमिशन की अनुमति देती है।<br><br><b>• सामग्री मॉडरेशन (UGC):</b> किसी भी प्रकार की अभद्र, राजनीतिक, गैर-भक्तिमय, व्यावसायिक या स्पैम सामग्री वाले संदेशों को तुरंत हटा दिया जाएगा। गूगल प्ले स्टोर की नीतियों का कड़ाई से पालन करने के लिए हम ऐसी सामग्री को बिल्कुल सहन नहीं करते हैं।",
+                secIntellectTitle: "<div class='section-number'>3</div> बौद्धिक संपदा और मीडिया स्ट्रीम",
+                secIntellectDesc: "एप्लिकेशन के भीतर उपलब्ध सभी डिजिटल संपत्तियां—जिनमें रीयल-टाइम लाइव दर्शन स्ट्रीम (जैसे श्री निताई गौरांग लाइव दर्शन), तस्वीरें, मानचित्र शैली परतें, प्रशासनिक आंकड़े, डेटाबेस संरचनाएं और कॉपीराइट लेआउट शामिल हैं—वे इस्कॉन आईटी सर्विसेज और इस्कॉन पदयात्रा मंत्रालय की अनन्य बौद्धिक संपदा हैं। इनका व्यावसायिक पुनर्वितरण या मिररिंग सख्त वर्जित है।",
+                secAdsTitle: "<div class='section-number'>4</div> प्रोग्रामेटिक विज्ञापन और सीडीएन संचालन",
+                secAdsDesc: "१३०+ देशों में हमारे हाई-स्पीड वैश्विक सर्वर, रियल-टाइम डेटाबेस सिंक और लाइव-स्ट्रीम को सुचारू रखने के लिए, हम न्यूनतम विज्ञापनों का उपयोग करते हैं। इन शर्तों को स्वीकार करके आप इस मॉडल से सहमत हैं। यदि भक्त चाहें तो विज्ञापन-मुक्त यूआई के लिए अपने फोन में प्राइवेट डीएनएस सेट कर सकते हैं।",
+                secLiabilityTitle: "<div class='section-number'>5</div> दायित्व की सीमा और क्षेत्राधिकार",
+                secLiabilityDesc: "एप्लिकेशन 'जैसा है' और 'जैसी उपलब्धता है' के आधार पर बिना किसी वारंटी के प्रदान किया जाता है। इस्कॉन आईटी सर्विसेज या इस्कॉन पदयात्रा मंत्रालय को किसी भी डेटा हानि या नेटवर्क शुल्क के लिए उत्तरदायी नहीं ठहराया जाएगा। इन शर्तों से उत्पन्न होने वाले किसी भी कानूनी विवाद का समाधान केवल पुणे, महाराष्ट्र, भारत की अदालतों के क्षेत्राधिकार में होगा।",
+                footerSupportHead: "<i class='fas fa-shield-alt text-success'></i> तकनीकी ऐप सहायता",
+                footerSupportDesc: "मोबाइल एप्लिकेशन तकनीकी कॉन्फ़िगरेशन, डेटाबेस सिंक्रनाइज़ेशन अनुरोधों या सिस्टम से संबंधित पूछताछ के लिए, कृपया हमारे मुख्य सिस्टम आर्किटेक्ट से व्हाट्सएप चैट के माध्यम से सीधे जुड़ें।",
+                btnWaSupport: "<i class='fab fa-whatsapp'></i> देव संतोष के साथ चैट करें (केवल व्हाट्सएप - कोई कॉल नहीं)",
+                footerCopyright: "© 2026 इस्कॉन पदयात्रा मंत्रालय। सर्वाधिकार सुरक्षित। <br> भक्ति भाव से डिज़ाइन और संचालित।"
+            },
+            mr: {
+                navTitle: "नियम आणि अटी",
+                headerTitleText: "<i class='fas fa-file-contract me-2'></i> नियम आणि अटी",
+                headerSubtitleText: "अधिकृत नियम आणि परवानग्यांचे धोरण",
+                badgeDocId: "<i class='fas fa-code-commit'></i> दस्तऐवज आयडी: ISK-PAD-TC-V2.6",
+                badgeDate: "<i class='fas fa-calendar-check'></i> प्रभावी: २०२६ आवृत्ती",
+                welcomeText: "अधिकृत <b>इस्कॉन पदयात्रा भक्त पोर्टल</b> मोबाईल ॲप्लिकेशन डाऊनलोड, इन्स्टॉल किंवा वापरून, तुम्ही या कायदेशीर करारातील सर्व नियम, अटी आणि सुरक्षा धोरणांचे पालन करण्यास सहमती दर्शवता.",
+                secSpoofTitle: "<div class='section-number'>1</div> सुरक्षा आणि अँटी-स्पूपिंग धोरणे",
+                secSpoofDesc: "आमच्या नकाशांवर, मार्गांवर आणि व्यास पूजा श्रद्धांजली बोर्डवर अचूक आकडेवारी राखण्यासाठी, खालील गोष्टींना कडक बंदी आहे:",
+                warnBoxHead: "<i class='fas fa-shield-virus me-2'></i> अँटी-जीपीएस स्पूफिंग आणि फेक लोकेशन बंदी",
+                warnBoxDesc: "स्थान बदलण्यासाठी फेक जीपीएस ॲप्स, मॉक लोकेशन सेटिंग्स, एमुलेटर किंवा व्हीपीएनचा वापर करणे कडक वर्जित आहे.<br><br><b>• स्वयंचलित डिव्हाइस बंदी:</b> चुकीचे स्थान दाखवून बनावट चेक-इन करण्याचा किंवा 'My Joined Journey' आकडेवारी बदलण्याचा प्रयत्न केल्यास, आमच्या फायरबेसमधून तुमचे डिव्हाइस टोकन कायमचे प्रतिबंधित (Ban) केले जाईल.<br><b>• शून्य सहनशीलता:</b> डेटाबेस आणि सिस्टीमच्या सुरक्षिततेसाठी, प्रतिबंधित डिव्हाइस कोणत्याही परिस्थितीत पुन्हा सुरू केले जाणार नाही.",
+                secUgcTitle: "<div class='section-number'>2</div> वापरकर्ता व्युत्पन्न सामग्री आणि श्रद्धांजली",
+                secUgcDesc: "व्यास पूजा ट्रिब्यूट वॉलवर संदेश पाठवणाऱ्या भक्तांनी खालील नियमांचे काटेकोरपणे पालन करणे आवश्यक आहे:",
+                deviceTokensDesc: "<b>• संदेश मर्यादा:</b> सर्व्हर सुरक्षेसाठी, एका डिव्हाइसवरून केवळ १ संदेश पाठवण्याची परवानगी आहे.<br><br><b>• सामग्री मॉडरेशन (UGC):</b> अयोग्य, राजकीय, व्यावसायिक किंवा स्पैम मजकूर असलेला कोणताही संदेश त्वरित हटवला जाईल. गुगल प्ले स्टोअरच्या नियमांचे पालन करण्यासाठी आम्ही अशा मजकुराला कडक बंदी घातली आहे.",
+                secIntellectTitle: "<div class='section-number'>3</div> बौद्धिक संपदा आणि मीडिया प्रवाह",
+                secIntellectDesc: "ॲप्लिकेशनमधील सर्व डिजिटल मालमत्ता—ज्यामध्ये थेट विग्रह दर्शन (श्री निताई गौरांग दर्शन), फोटो, नकाशे, आकडेवारी, डेटाबेस रचना आणि कॉपीराइट लेआउट समाविष्ट आहेत—इस्कॉन आयटी सर्व्हिसेस आणि इस्कॉन पदयात्रा मंत्रालयाची बौद्धिक संपत्ती आहे. यांचे मिररिंग किंवा व्यावसायिक वितरण वर्जित आहे.",
+                secAdsTitle: "<div class='section-number'>4</div> जाहिराती आणि होस्टिंग मॉडेल",
+                secAdsDesc: "१३०+ देशांमधील आमचे सर्व्हर्स, डेटाबेस आणि थेट-प्रसारण सुरळीत ठेवण्यासाठी आम्ही जाहिरातींचा वापर करतो. या अटी स्वीकारून आपण या मॉडेलशी सहमत आहात. हवे असल्यास भक्त जाहिरात-मुक्त यूआयसाठी खाजगी डीएनएस सेट करू शकतात.",
+                secLiabilityTitle: "<div class='section-number'>5</div> दायित्वाची मर्यादा आणि कायदेशीर क्षेत्र",
+                secLiabilityDesc: "ॲप्लिकेशन जसे आहे तसेच कोणत्याही हमीशिवाय दिले जाते. डेटा गळती किंवा मोबाईल नेटवर्क शुल्कासाठी इस्कॉन आयटी सर्व्हिसेस किंवा इस्कॉन पदयात्रा मंत्रालय जबाबदार राहणार नाही. कोणत्याही कायदेशीर वादाचे निवारण पुणे, महाराष्ट्र, भारत येथील न्यायालयाच्या अंतर्गत केले जाईल.",
+                footerSupportHead: "<i class='fas fa-shield-alt text-success'></i> तांत्रिक ॲप सहाय्यता",
+                footerSupportDesc: "मोबाईल ॲप्लिकेशन तांत्रिक कॉन्फिगरेशन, डेटाबेस सिंक्रोनाइझेशन विनंती किंवा सिस्टमशी संबंधित चौकशीसाठी, कृपया आमच्या मुख्य सिस्टम आर्किटेक्टशी थेट व्हॉट्सॲपद्वारे संपर्क साधा.",
+                btnWaSupport: "<i class='fab fa-whatsapp'></i> देव संतोष यांच्याशी चॅट करा (fक्त व्हॉट्सॲप - कॉल करू नये)",
+                footerCopyright: "© 2026 इस्कॉन पदयात्रा मंत्रालय. सर्व हक्क राखीव. <br> भक्ती भावाने डिझाइन आणि संचालित."
+            }
+        };
+
+        let activeLanguage = safeStorage.getItem('padyatra_lang') || 'en';
+
+        const dropdownEl = document.getElementById('lang-select-policy');
+        if (dropdownEl) {
+            dropdownEl.value = activeLanguage;
+        }
+
+        function changeLanguage(lang) {
+            activeLanguage = lang;
+            safeStorage.setItem('padyatra_lang', lang);
+            localizeUI();
+        }
+
+        function localizeUI() {
+            const d = termsDict[activeLanguage];
+            document.getElementById('nav-title').textContent = d.navTitle;
+            document.getElementById('header-title-text').innerHTML = d.headerTitleText;
+            document.getElementById('header-subtitle-text').textContent = d.headerSubtitleText;
+            document.getElementById('badge-doc-id').innerHTML = d.badgeDocId;
+            document.getElementById('badge-date').innerHTML = d.badgeDate;
+            document.getElementById('welcome-text-msg').innerHTML = d.welcomeText;
+            document.getElementById('sec-spoof-title').innerHTML = d.secSpoofTitle;
+            document.getElementById('sec-spoof-desc').textContent = d.secSpoofDesc;
+            document.getElementById('warn-box-head').innerHTML = d.warnBoxHead;
+            document.getElementById('warn-box-desc').innerHTML = d.warnBoxDesc;
+            document.getElementById('sec-ugc-title').innerHTML = d.secUgcTitle;
+            document.getElementById('sec-ugc-desc').textContent = d.secUgcDesc;
+            document.getElementById('device-tokens-desc').innerHTML = d.deviceTokensDesc;
+            document.getElementById('sec-intellect-title').innerHTML = d.secIntellectTitle;
+            document.getElementById('sec-intellect-desc').textContent = d.secIntellectDesc;
+            document.getElementById('sec-ads-title').innerHTML = d.secAdsTitle;
+            document.getElementById('sec-ads-desc').textContent = d.secAdsDesc;
+            document.getElementById('sec-liability-title').innerHTML = d.secLiabilityTitle;
+            document.getElementById('sec-liability-desc').textContent = d.secLiabilityDesc;
+            document.getElementById('footer-support-head').innerHTML = d.footerSupportHead;
+            document.getElementById('footer-support-desc').textContent = d.footerSupportDesc;
+            document.getElementById('btn-wa-support').innerHTML = d.btnWaSupport;
+            document.getElementById('footer-copyright-text').innerHTML = d.footerCopyright;
+        }
+
+        localizeUI();
+
+        if(localStorage.getItem('theme') === 'dark') {
+            document.body.setAttribute('data-theme', 'dark');
+            document.documentElement.style.setProperty('--card-bg', '#1e293b');
+            document.documentElement.style.setProperty('--bg-color', '#0f172a');
+            document.documentElement.style.setProperty('--text-color', '#f8fafc');
+            document.documentElement.style.setProperty('--text-muted', '#94a3b8');
+            document.documentElement.style.setProperty('--border-color', '#334155');
+        }
+
+        window.onscroll = function() { updateProgressBar() };
+        function updateProgressBar() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+        //]]>
+    </script>
+</body>
+</html>
