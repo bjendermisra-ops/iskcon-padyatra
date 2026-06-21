@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <title>About Us - ISKCON Padyatra</title>
+    
+    <!-- Bootstrap & Premium Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&amp;family=Poppins:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@700&amp;display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           🛠️ ENTERPRISE PREMIUM STYLES
+           ========================================= */
+        :root {
+            --primary: #FF9933;       
+            --secondary: #4a2c2a;     
+            --bg-color: #f4f5f7;      
+            --card-bg: #ffffff;       
+            --text-color: #1e293b;       
+            --text-muted: #64748b;
+            --danger-color: #ef4444;
+            --border-color: #e2e8f0;
+            --ui-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08);
+            --transition-speed: 0.3s;
+        }
+        
+        [data-theme="dark"] {
+            --primary: #FF9933; 
+            --secondary: #140804; 
+            --bg-color: #0f172a; 
+            --card-bg: #1e293b; 
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --ui-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.6);
+        }
+
+        body { 
+            background-color: var(--bg-color); 
+            font-family: 'Poppins', sans-serif; 
+            color: var(--text-color); 
+            transition: background-color var(--transition-speed), color var(--transition-speed); 
+            margin: 0; 
+            padding-bottom: 40px;
+            -webkit-tap-highlight-color: transparent; 
+            background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+        .progress-container {
+            width: 100%; height: 4px; background: rgba(0,0,0,0.1); position: fixed; top: 68px; z-index: 1001;
+        }
+        .progress-bar {
+            height: 4px; background: #ffffff; width: 0%; box-shadow: 0 0 10px rgba(255,255,255,0.8);
+        }
+
+        .top-nav {
+            background: linear-gradient(90deg, #d84315, var(--primary), #ef6c00);
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 4px 20px rgba(230, 81, 0, 0.5);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        .back-btn {
+            color: white; font-size: 1.3rem; text-decoration: none; transition: 0.2s;
+            display: flex; align-items: center; justify-content: center;
+            width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .back-btn:active { transform: scale(0.85); background: rgba(255,255,255,0.4); }
+        .page-title {
+            font-family: 'Space Grotesk', sans-serif; color: white; font-size: 1.3rem; font-weight: 700; margin: 0; letter-spacing: 0.5px;
+        }
+
+        .policy-header {
+            background: linear-gradient(135deg, #111827 0%, #374151 100%);
+            padding: 110px 20px 60px 20px; 
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid var(--primary);
+        }
+        .header-bg-glow {
+            position: absolute; top: 0; left: 50%; width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(255, 153, 51, 0.1) 0%, transparent 70%);
+            transform: translate(-50%, -50%); pointer-events: none;
+        }
+        .header-title {
+            font-family: 'Cinzel', serif; font-size: 2.2rem; font-weight: 800; color: #ffcc80; margin: 0 0 10px 0; position: relative; z-index: 1; text-transform: uppercase;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6); letter-spacing: 2px;
+        }
+        .header-subtitle {
+            font-size: 1rem; color: #9ca3af; position: relative; z-index: 1; font-weight: 400; letter-spacing: 1px;
+        }
+
+        .legal-metadata {
+            display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 20px; position: relative; z-index: 1;
+        }
+        .meta-badge {
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+            color: #d1d5db; padding: 6px 12px; border-radius: 30px; font-size: 0.75rem; font-family: monospace;
+            backdrop-filter: blur(4px); display: flex; align-items: center; gap: 6px;
+        }
+        .meta-badge i { color: var(--primary); }
+
+        .policy-container {
+            max-width: 900px;
+            margin: -30px auto 40px auto;
+            position: relative;
+            z-index: 2;
+            padding: 0 15px;
+        }
+
+        .legal-section-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: var(--ui-shadow);
+            padding: 25px 30px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .legal-section-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px -10px rgba(255, 153, 51, 0.15);
+            border-color: rgba(255, 153, 51, 0.3);
+        }
+
+        .p-section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--primary);
+            border-bottom: 2px solid rgba(255, 153, 51, 0.15);
+            padding-bottom: 12px;
+            margin-top: 0;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-number {
+            background: rgba(255, 153, 51, 0.1); color: var(--primary);
+            width: 32px; height: 32px; display: flex; justify-content: center; align-items: center;
+            border-radius: 8px; font-size: 1rem; font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+        }
+
+        .p-text {
+            font-size: 0.95rem; line-height: 1.8; color: var(--text-color); margin-bottom: 20px; text-align: justify; font-weight: 400; opacity: 0.9;
+        }
+
+        .highlight-box {
+            background: rgba(255, 153, 51, 0.04);
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--primary);
+            border-radius: 8px;
+            padding: 18px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .support-footer-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 40px 0 20px 0;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--ui-shadow);
+        }
+        .support-footer-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 10px;
+            display: flex; justify-content: center; align-items: center; gap: 8px;
+        }
+        .support-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .tech-tags-small {
+            display: flex; justify-content: center; gap: 15px; margin-bottom: 20px;
+            font-size: 0.75rem; color: var(--text-muted);
+        }
+        .tech-tags-small span {
+            display: flex; align-items: center; gap: 5px;
+        }
+        .action-btn-outline {
+            background: transparent;
+            color: #25d366 !important;
+            border: 2px solid #25d366;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.15);
+        }
+        .action-btn-outline:hover {
+            background: #25d366;
+            color: white !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i></a>
+        <h1 class="page-title" id="nav-title">About Us</h1>
+        <select id="lang-select-policy" onchange="changeLanguage(this.value)" class="ms-auto" style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 6px 12px; font-size: 0.8rem; focus: outline-none;">
+            <option value="en" style="background:#1f0802; color:white;">English</option>
+            <option value="hi" style="background:#1f0802; color:white;">हिन्दी</option>
+            <option value="mr" style="background:#1f0802; color:white;">मराठी</option>
+        </select>
+    </div>
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    <header class="policy-header">
+        <div class="header-bg-glow"></div>
+        <h1 class="header-title" id="header-title-text"><i class="fas fa-info-circle me-2"></i> About Us</h1>
+        <p class="header-subtitle" id="header-subtitle-text">Official ISKCON Padyatra Mission & Legacy</p>
+        
+        <div class="legal-metadata">
+            <span class="meta-badge" id="badge-doc-id"><i class="fas fa-code-commit"></i> Doc ID: ISK-PAD-AB-V2.6</span>
+            <span class="meta-badge" id="badge-date"><i class="fas fa-calendar-check"></i> Effective: 2026 Edition</span>
+            <span class="meta-badge"><i class="fab fa-google-play"></i> Play Store Verified</span>
+        </div>
+    </header>
+
+    <main class="policy-container">
+
+        <div class="legal-section-card" style="background: linear-gradient(to right, var(--card-bg), rgba(255,153,51,0.05)); border-left: 4px solid var(--primary);">
+            <p class="p-text" id="welcome-text-msg" style="font-weight: 500;">Welcome to the official <b>ISKCON Padyatra Devotee Portal</b>. Operating under the sacred guidance of the ISKCON Padyatra Ministry, our mobile and web architectures are designed to unify, track, and support walking pilgrimages (Padyatras) globally. Our mission is built on ancient Vedic tenets, brought to the modern world through innovative, zero-delay cloud telemetry.</p>
+        </div>
+
+        <div class="legal-section-card">
+            <h2 class="p-section-title" id="sec-mission-title"><div class="section-number">1</div> The Spiritual Vision &amp; Roots</h2>
+            <p class="p-text" id="sec-mission-desc1">The concept of Padyatra (pilgrimage on foot) was revitalized by Lord Sri Chaitanya Mahaprabhu over 500 years ago as He walked throughout the length and breadth of India, distributing the holy names of Sri Sri Nitai Gauranga. In 1976, our Founder-Acharya His Divine Grace A.C. Bhaktivedanta Swami Prabhupada instructed his disciples to continue this sacred walk. Since then, under the tireless leadership of H.H. Lokanath Swami Maharaj, ISKCON Padyatra has traversed thousands of villages, bringing spiritual wisdom, transcendental book distribution, and sanctified vegetarian food (Prasadam) directly to the doorsteps of humanity.</p>
+            <p class="p-text" id="sec-mission-desc2">Every Padyatra is not merely a physical trek but a grand mobile temple. It carries beautifully carved deities of Sri Sri Nitai Gauranga on a decorated bullock cart, accompanied by chanting devotees, distributing the message of peace, love, and spiritual enlightenment to communities that are otherwise cut off from mainstream temples.</p>
+            
+            <div class="highlight-box">
+                <p class="p-text mb-0" id="srila-prabhupada-quote"><b>Srila Prabhupada Daily Quote:</b> "This Harinama Sankirtana is so powerful that even without understanding the language, anyone who hears the holy name is purified."</p>
+            </div>
+        </div>
+
+        <div class="legal-section-card">
+            <h2 class="p-section-title" id="sec-tech-title"><div class="section-number">2</div> Modern Technical Evolution</h2>
+            <p class="p-text" id="sec-tech-desc1">To support this vast global movement in the 21st century, ISKCON IT Services (spearheaded by chief systems architect Dev Santosh) designed the Devotee Portal. Our application bridges rural walking routes with urban congregations. Through lightweight foreground GPS coordinate tracking, secure Webview integrations, and real-time database synchronization via Firebase clusters, we offer real-time tracking of active Padyatra carts (such as the Maharashtra Bhakti Padyatra, Vrindavan Padyatra, and Jagannath Puri Padyatra), live deity darshan streaming, and spam-protected Vyasa Puja tribute submissions.</p>
+            <p class="p-text" id="sec-tech-desc2">The technical stack has been carefully optimized to operate on low battery power, ensuring that traveling devotees can synchronize stats even in rural territories with weak mobile networks. Our caching algorithms and secure sandboxed tokens ensure complete protection against unauthorized manipulation, making the application robust and reliable for thousands of concurrent active users.</p>
+        </div>
+
+        <div class="legal-section-card">
+            <h2 class="p-section-title" id="sec-core-title"><div class="section-number">3</div> Core Pillars of Padyatra Services</h2>
+            <p class="p-text" id="sec-core-desc">Our digital portal actively manages and coordinates three core pillars of pilgrimage service: <br><br>
+            <b>• Harinama Sankirtan:</b> Providing real-time route progress so local devotees can dynamically join congregational chanting of the Hare Krishna Maha-mantra on the streets. <br><br>
+            <b>• Shastra Distribution:</b> Encouraging and tracking the offline distribution of spiritual literatures, Srimad Bhagavatam, and Bhagavad-gitas in distant villages and remote districts, making wisdom accessible to all. <br><br>
+            <b>• Prasadam Distribution:</b> Logging and assisting with the free distribution of sanctified vegetarian food to all visitors, helping eliminate hunger and purify consciousness globally.</p>
+        </div>
+
+        <div class="legal-section-card">
+            <h2 class="p-section-title" id="sec-cow-title"><div class="section-number">4</div> Cow Protection &amp; Bull Training</h2>
+            <p class="p-text" id="sec-cow-desc1">An essential element of ISKCON Padyatra is our firm commitment to Go-Seva (cow protection) and the promotion of bullock-driven transport. In an age dominated by fossil-fuel dependent machines, the Padyatra demonstrates a highly sustainable, eco-friendly, and spiritually aligned lifestyle. The majestic bulls pulling the Padyatra chariots are trained with utmost care, treated as family members, and protected throughout their natural lives.</p>
+            <p class="p-text" id="sec-cow-desc2">By highlighting the utilization of bulls for transport and agriculture, the Padyatra aims to re-establish the traditional Vedic agrarian model, showing that humanity can live in complete harmony with mother nature and protected animals without resorting to industrial exploitation.</p>
+        </div>
+
+        <div class="legal-section-card">
+            <h2 class="p-section-title" id="sec-outreach-title"><div class="section-number">5</div> Global Voluntarism &amp; Cultural Impact</h2>
+            <p class="p-text" id="sec-outreach-desc">Over the decades, the cultural impact of ISKCON Padyatras has been recognized globally. Millions of villagers have received their first spiritual books, tasted sanctified prasadam, and joined in the divine chants of Harinama through these walks. The portal serves as a coordination hub for voluntary devotees, allowing them to register, join active walks, communicate with coordinators, and contribute to the grand mission of spiritual outreach.</p>
+        </div>
+
+        <div class="support-footer-card">
+            <h3 id="footer-support-head"><i class="fas fa-shield-alt text-success"></i> Technical App Support</h3>
+            <p class="support-text" id="footer-support-desc">For mobile application technical configurations, database synchronization requests, or system-related inquiries, please connect directly with our chief systems architect via WhatsApp chat.</p>
+            
+            <div class="tech-tags-small">
+                <span><i class="fas fa-copyright"></i> Architecture</span>
+                <span><i class="fas fa-server"></i> Cloud Optimized</span>
+                <span><i class="fas fa-network-wired"></i> Zero-Delay CDN</span>
+            </div>
+
+            <a href="https://wa.me/919561160799?text=Hare%20Krishna%20Dev%20Santosh!%20I%20need%20technical%20support%20for%20the%20ISKCON%20Padyatra%20App." target="_blank" class="action-btn-outline" id="btn-wa-support">
+                <i class="fab fa-whatsapp"></i> Chat with Dev Santosh (WhatsApp Only - No Call)
+            </a>
+        </div>
+
+    </main>
+
+    <footer style="text-align: center; padding: 20px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;" id="footer-copyright-text">
+        © 2026 ISKCON Padyatra Ministry. All Rights Reserved. <br>
+        Designed &amp; Maintained with devotion.
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+        //<![CDATA[
+        const safeStorage = {
+            getItem(key) {
+                try { return localStorage.getItem(key); } catch (e) { return this[key] || null; }
+            },
+            setItem(key, val) {
+                try { localStorage.setItem(key, val); } catch (e) { this[key] = val; }
+            }
+        };
+
+        const aboutDict = {
+            en: {
+                navTitle: "About Us",
+                headerTitleText: "<i class='fas fa-info-circle me-2'></i> About Us",
+                headerSubtitleText: "Official ISKCON Padyatra Mission & Legacy",
+                badgeDocId: "<i class='fas fa-code-commit'></i> Doc ID: ISK-PAD-AB-V2.6",
+                badgeDate: "<i class='fas fa-calendar-check'></i> Effective: 2026 Edition",
+                welcomeText: "Welcome to the official <b>ISKCON Padyatra Devotee Portal</b>. Operating under the sacred guidance of the ISKCON Padyatra Ministry, our mobile and web architectures are designed to unify, track, and support walking pilgrimages (Padyatras) globally. Our mission is built on ancient Vedic tenets, brought to the modern world through innovative, zero-delay cloud telemetry.",
+                secMissionTitle: "<div class='section-number'>1</div> The Spiritual Vision &amp; Roots",
+                secMissionDesc1: "The concept of Padyatra (pilgrimage on foot) was revitalized by Lord Sri Chaitanya Mahaprabhu over 500 years ago as He walked throughout the length and breadth of India, distributing the holy names of Sri Sri Nitai Gauranga. In 1976, our Founder-Acharya His Divine Grace A.C. Bhaktivedanta Swami Prabhupada instructed his disciples to continue this sacred walk. Since then, under the tireless leadership of H.H. Lokanath Swami Maharaj, ISKCON Padyatra has traversed thousands of villages, bringing spiritual wisdom, transcendental book distribution, and sanctified vegetarian food (Prasadam) directly to the doorsteps of humanity.",
+                secMissionDesc2: "Every Padyatra is not merely a physical trek but a grand mobile temple. It carries beautifully carved deities of Sri Sri Nitai Gauranga on a decorated bullock cart, accompanied by chanting devotees, distributing the message of peace, love, and spiritual enlightenment to communities that are otherwise cut off from mainstream temples.",
+                srilaPrabhupadaQuote: "<b>Srila Prabhupada Daily Quote:</b> \"This Harinama Sankirtana is so powerful that even without understanding the language, anyone who hears the holy name is purified.\"",
+                secTechTitle: "<div class='section-number'>2</div> Modern Technical Evolution",
+                secTechDesc1: "To support this vast global movement in the 21st century, ISKCON IT Services (spearheaded by chief systems architect Dev Santosh) designed the Devotee Portal. Our application bridges rural walking routes with urban congregations. Through lightweight foreground GPS coordinate tracking, secure Webview integrations, and real-time database synchronization via Firebase clusters, we offer real-time tracking of active Padyatra carts (such as the Maharashtra Bhakti Padyatra, Vrindavan Padyatra, and Jagannath Puri Padyatra), live deity darshan streaming, and spam-protected Vyasa Puja tribute submissions.",
+                secTechDesc2: "The technical stack has been carefully optimized to operate on low battery power, ensuring that traveling devotees can synchronize stats even in rural territories with weak mobile networks. Our caching algorithms and secure sandboxed tokens ensure complete protection against unauthorized manipulation, making the application robust and reliable for thousands of concurrent active users.",
+                secCoreTitle: "<div class='section-number'>3</div> Core Pillars of Padyatra Services",
+                secCoreDesc: "Our digital portal actively manages and coordinates three core pillars of pilgrimage service: <br><br><b>• Harinama Sankirtan:</b> Providing real-time route progress so local devotees can dynamically join congregational chanting of the Hare Krishna Maha-mantra on the streets. <br><br><b>• Shastra Distribution:</b> Encouraging and tracking the offline distribution of spiritual literatures, Srimad Bhagavatam, and Bhagavad-gitas in distant villages and remote districts, making wisdom accessible to all. <br><br><b>• Prasadam Distribution:</b> Logging and assisting with the free distribution of sanctified vegetarian food to all visitors, helping eliminate hunger and purify consciousness globally.",
+                secCowTitle: "<div class='section-number'>4</div> Cow Protection &amp; Bull Training",
+                secCowDesc1: "An essential element of ISKCON Padyatra is our firm commitment to Go-Seva (cow protection) and the promotion of bullock-driven transport. In an age dominated by fossil-fuel dependent machines, the Padyatra demonstrates a highly sustainable, eco-friendly, and spiritually aligned lifestyle. The majestic bulls pulling the Padyatra chariots are trained with utmost care, treated as family members, and protected throughout their natural lives.",
+                secCowDesc2: "By highlighting the utilization of bulls for transport and agriculture, the Padyatra aims to re-establish the traditional Vedic agrarian model, showing that humanity can live in complete harmony with mother nature and protected animals without resorting to industrial exploitation.",
+                secOutreachTitle: "<div class='section-number'>5</div> Global Voluntarism &amp; Cultural Impact",
+                secOutreachDesc: "Over the decades, the cultural impact of ISKCON Padyatras has been recognized globally. Millions of villagers have received their first spiritual books, tasted sanctified prasadam, and joined in the divine chants of Harinama through these walks. The portal serves as a coordination hub for voluntary devotees, allowing them to register, join active walks, communicate with coordinators, and contribute to the grand mission of spiritual outreach.",
+                footerSupportHead: "<i class='fas fa-shield-alt text-success'></i> Technical App Support",
+                footerSupportDesc: "For mobile application technical configurations, database synchronization requests, or system-related inquiries, please connect directly with our chief systems architect via WhatsApp chat.",
+                btnWaSupport: "<i class='fab fa-whatsapp'></i> Chat with Dev Santosh (WhatsApp Only - No Call)",
+                footerCopyright: "© 2026 ISKCON Padyatra Ministry. All Rights Reserved. <br> Designed &amp; Maintained with devotion."
+            },
+            hi: {
+                navTitle: "हमारे बारे में",
+                headerTitleText: "<i class='fas fa-info-circle me-2'></i> हमारे बारे में",
+                headerSubtitleText: "आधिकारिक इस्कॉन पदयात्रा मिशन और विरासत",
+                badgeDocId: "<i class='fas fa-code-commit'></i> दस्तावेज़ आईडी: ISK-PAD-AB-V2.6",
+                badgeDate: "<i class='fas fa-calendar-check'></i> प्रभावी: २०२६ संस्करण",
+                welcomeText: "आधिकारिक <b>इस्कॉन पदयात्रा भक्त पोर्टल</b> में आपका स्वागत है। इस्कॉन पदयात्रा मंत्रालय के पावन मार्गदर्शन में संचालित, हमारा मोबाइल और वेब आर्किटेक्चर वैश्विक स्तर पर पैदल तीर्थयात्राओं (पदयात्राओं) को एकीकृत करने, ट्रैक करने और समर्थन देने के लिए डिज़ाइन किया गया है। हमारा मिशन प्राचीन वैदिक सिद्धांतों पर आधारित है, जिसे नवीन और शून्य-विलंब क्लाउड टेलीमेट्री के माध्यम से आधुनिक दुनिया में लाया गया है।",
+                secMissionTitle: "<div class='section-number'>1</div> आध्यात्मिक दृष्टि और जड़ें",
+                secMissionDesc1: "पदयात्रा (पैदल तीर्थयात्रा) की अवधारणा को ५०० से अधिक वर्ष पूर्व भगवान श्री चैतन्य महाप्रभु द्वारा पुनर्जीवित किया गया था, जब उन्होंने पूरे भारत में पैदल यात्रा करते हुए श्री श्री निताई गौरांग के पवित्र नामों का वितरण किया था। १९७६ में, हमारे संस्थापक-आचार्य कृष्णकृपामूर्ति श्री श्रीमद् ए.सी. भक्तिवेदांत स्वामी प्रभुपाद ने अपने शिष्यों को इस पवित्र पदयात्रा को जारी रखने का निर्देश दिया। तब से, परम पूज्य लोकनाथ स्वामी महाराज के अथक नेतृत्व में, इस्कॉन पदयात्रा ने हजारों गांवों को कवर किया है, जिससे मानवता के द्वार पर आध्यात्मिक ज्ञान, दिव्य पुस्तकों का वितरण और पवित्र शाकाहारी भोजन (प्रसाद) पहुँचाया जा रहा है।",
+                secMissionDesc2: "प्रत्येक पदयात्रा केवल एक शारीरिक यात्रा नहीं है, बल्कि एक गतिशील मोबाइल मंदिर है। यह एक सजे हुए बैलगाड़ी पर श्री श्री निताई गौरांग के विग्रहों को ले जाती है, जिसमें कीर्तन करते भक्त चलते हैं, जो उन समुदायों तक शांति, प्रेम और आध्यात्मिक ज्ञान का संदेश पहुंचाते हैं जो अन्यथा मुख्य मंदिरों से कटे हुए हैं।",
+                srilaPrabhupadaQuote: "<b>श्रील प्रभुपाद दैनिक विचार:</b> \"यह हरिनाम संकीर्तन इतना शक्तिशाली है कि भाषा समझे बिना भी, जो कोई पवित्र नाम सुनता है वह शुद्ध हो जाता है।\"",
+                secTechTitle: "<div class='section-number'>2</div> आधुनिक तकनीकी विकास",
+                secTechDesc1: "२१वीं सदी में इस विशाल वैश्विक आंदोलन को समर्थन देने के लिए, इस्कॉन आईटी सर्विसेज (मुख्य सिस्टम आर्किटेक्ट देव संतोष के नेतृत्व में) ने इस 'भक्त पोर्टल' को डिज़ाइन किया। हमारा एप्लिकेशन ग्रामीण पैदल मार्गों को शहरी भक्तों से जोड़ता है। हल्के फोरग्राउंड जीपीएस कोऑर्डिनेट ट्रैकिंग, सुरक्षित वेबव्यू इंटीग्रेशन और फायरबेस के माध्यम से रीयल-टाइम डेटाबेस सिंक्रोनाइज़ेशन द्वारा, हम सक्रिय पदयात्रा रथों (जैसे महाराष्ट्र भक्ति पदयात्रा, वृंदावन पदयात्रा और जगन्नाथ पुरी पदयात्रा) की रीयल-टाइम ट्रैकिंग, लाइव दर्शन स्ट्रीमिंग और स्पैम-मुक्त व्यास पूजा श्रद्धांजलि सबमिशन प्रदान करते हैं।",
+                secTechDesc2: "इस तकनीकी ढांचे को इस प्रकार अनुकूलित किया गया है कि यह कम बैटरी शक्ति पर भी कुशलता से कार्य कर सके, जिससे हमारे भक्त बिना किसी रुकावट के कमजोर मोबाइल नेटवर्क वाले क्षेत्रों में भी आकडे सिंक कर सकें। हमारे कैशिंग एल्गोरिदम और सुरक्षित सैंडबॉक्स टोकन दुर्भावनापूर्ण गतिविधियों से पूर्ण सुरक्षा प्रदान करते हैं।",
+                secCoreTitle: "<div class='section-number'>3</div> पदयात्रा सेवा के मुख्य स्तंभ",
+                secCoreDesc: "हमारा डिजिटल पोर्टल सक्रिय रूप से तीर्थयात्रा सेवा के तीन मुख्य स्तंभों का प्रबंधन और समन्वय करता है: <br><br><b>• हरिनाम संकीर्तन:</b> वास्तविक समय में मार्ग की प्रगति प्रदान करना ताकि स्थानीय भक्त सड़कों पर हरे कृष्ण महा-मंत्र के सामूहिक संकीर्तन में गतिशील रूप से शामिल हो सकें। <br><br><b>• शास्त्र वितरण:</b> सुदूर गांवों और दूरदराज के जिलों में आध्यात्मिक साहित्य, श्रीमद्भागवतम और भगवद्-गीता के ऑफलाइन वितरण को बढ़ावा देना और उसे ट्रैक करना। <br><br><b>• महाप्रसाद वितरण:</b> सभी आगंतुकों को पवित्र प्रसाद के मुफ्त वितरण को दर्ज करना और उसमें सहायता करना, जिससे वैश्विक स्तर पर चेतना को शुद्ध करने में मदद मिल सके।",
+                secCowTitle: "<div class='section-number'>4</div> गो-सेवा और बैलों का प्रशिक्षण",
+                secCowDesc1: "इस्कॉन पदयात्रा का एक अनिवार्य हिस्सा हमारी गो-सेवा (गाय संरक्षण) और बैल चालित परिवहन को बढ़ावा देने की दृढ़ प्रतिबद्धता है। जीवाश्म ईंधन पर अत्यधिक निर्भर आधुनिक युग में, पदयात्रा एक पर्यावरण-अनुकूल, टिकाऊ और आध्यात्मिक जीवन शैली का सजीव प्रदर्शन करती है। पदयात्रा रथों को खींचने वाले बैलों की देखभाल परिवार के सदस्यों की तरह की जाती है।",
+                secCowDesc2: "परिवहन और कृषि के लिए बैलों के उपयोग को बढ़ावा देकर, पदयात्रा पारंपरिक वैदिक कृषि मॉडल को फिर से स्थापित करने का प्रयास करती है। यह दर्शाता है कि मानव सभ्यता प्रकृति और संरक्षित पशुओं के साथ पूर्ण सामंजस्य में बिना किसी औद्योगिक शोषण के शांतिपूर्वक रह सकती है।",
+                secOutreachTitle: "<div class='section-number'>5</div> वैश्विक स्वयंसेवा और सांस्कृतिक प्रभाव",
+                secOutreachDesc: "दशकों से, इस्कॉन पदयात्राओं के सांस्कृतिक प्रभाव को वैश्विक स्तर पर सराहा गया है। इन यात्राओं के माध्यम से लाखों लोगों ने पहली बार आध्यात्मिक ग्रंथ प्राप्त किए, प्रसाद ग्रहण किया और संकीर्तन में भाग लिया। यह पोर्टल हमारे स्वयंसेवक भक्तों के लिए एक मुख्य समन्वय केंद्र के रूप में कार्य करता है, जहाँ वे यात्रा में शामिल होने के लिए पंजीकरण कर सकते हैं और समन्वयकों से संवाद कर सकते हैं।",
+                footerSupportHead: "<i class='fas fa-shield-alt text-success'></i> तकनीकी ऐप सहायता",
+                footerSupportDesc: "मोबाइल एप्लिकेशन तकनीकी कॉन्फ़िगरेशन, डेटाबेस सिंक्रनाइज़ेशन अनुरोधों या सिस्टम से संबंधित पूछताछ के लिए, कृपया हमारे मुख्य सिस्टम आर्किटेक्ट से व्हाट्सएप चैट के माध्यम से सीधे जुड़ें।",
+                btnWaSupport: "<i class='fab fa-whatsapp'></i> देव संतोष के साथ चैट करें (केवल व्हाट्सएप - कोई कॉल नहीं)",
+                footerCopyright: "© 2026 इस्कॉन पदयात्रा मंत्रालय। सर्वाधिकार सुरक्षित। <br> भक्ति भाव से डिज़ाइन और संचालित।"
+            },
+            mr: {
+                navTitle: "आमच्याबद्दल",
+                headerTitleText: "<i class='fas fa-info-circle me-2'></i> आमच्याबद्दल",
+                headerSubtitleText: "अधिकृत इस्कॉन पदयात्रा मिशन आणि वारसा",
+                badgeDocId: "<i class='fas fa-code-commit'></i> दस्तऐवज आयडी: ISK-PAD-AB-V2.6",
+                badgeDate: "<i class='fas fa-calendar-check'></i> प्रभावी: २०२६ आवृत्ती",
+                welcomeText: "अधिकृत <b>इस्कॉन पदयात्रा भक्त पोर्टल</b> मध्ये आपले स्वागत आहे. इस्कॉन पदयात्रा मंत्रालयाच्या पावन मार्गदर्शनाखाली कार्यरत असलेले आमचे मोबाईल आणि वेब आर्किटेक्चर जागतिक स्तरावर पदयात्रांचे एकत्रीकरण, ट्रॅकिंग आणि समर्थन करण्यासाठी डिझाइन केलेले आहे. आमचे मिशन प्राचीन वैदिक तत्त्वांवर आधारित असून ते अत्याधुनिक क्लाउड टेलिमेट्रीद्वारे आधुनिक जगात आणले गेले आहे.",
+                secMissionTitle: "<div class='section-number'>1</div> आध्यात्मिक दृष्टी आणि मूळ",
+                secMissionDesc1: "पदयात्रा (पाई तीर्थयात्रा) ची संकल्पना ५०० हून अधिक वर्षांपूर्वी भगवान श्री चैतन्य महाप्रभु यांनी पुनरुज्जीवित केली होती जेव्हा त्यांनी संपूर्ण भारतामध्ये प्रवास करून श्री श्री निताई गौरांग यांच्या पवित्र नामांचे वाटप केले होते. १९७६ मध्ये, आमचे संस्थापक-आचार्य श्री श्रीमद् ए.सी. भक्तीवेदांत स्वामी प्रभुपाद यांनी त्यांच्या शिष्यांना ही पवित्र पदयात्रा सुरू ठेवण्याची आज्ञा दिली. तेव्हापासून, प.पू. लोकनाथ स्वामी महाराज यांच्या अथक नेतृत्वाखाली, इस्कॉन पदयात्रेने हजारो गावांचा प्रवास केला असून लोकांच्या दारापर्यंत आध्यात्मिक ज्ञान, दिव्य ग्रंथ वितरण आणि पवित्र शाकाहारी प्रसाद पोहोचवला आहे.",
+                secMissionDesc2: "प्रत्येक पदयात्रा ही केवळ शारीरिक रपेट नसून एक फिरते भव्य मंदिर आहे. सजवलेल्या बैलगाडीवर श्री श्री निताई गौरांग यांचे विग्रह विराजमान असतात, ज्यांच्यासोबत कीर्तन करणारे भक्त चालतात. याद्वारे दुर्गम भागातील लोकांपर्यंत ईश्वराचा संदेश पोहोचवला जातो.",
+                srilaPrabhupadaQuote: "<b>श्रील प्रभुपाद दैनिक विचार:</b> \"हे हरिनाम संकीर्तन इतके शक्तिशाली आहे की भाषा समजली नाही तरी, जो कोणी पवित्र नाम ऐकतो तो शुद्ध होतो.\"",
+                secTechTitle: "<div class='section-number'>2</div> आधुनिक तांत्रिक प्रगती",
+                secTechDesc1: "२१ व्या शतकात या जागतिक चळवळीला पाठबळ देण्यासाठी, इस्कॉन आयटी सर्व्हिसेसने (मुख्य सिस्टीम आर्किटेक्ट देव संतोष यांच्या नेतृत्वाखाली) हे 'भक्त पोर्टल' डिझाइन केले. आमचे ॲप्लिकेशन ग्रामीण पदयात्रा मार्गांना शहरी भक्तांशी जोडते. जीपीएस ट्रॅकिंग, वेबव्यू इंटिग्रेशन्स आणि फायरबेसद्वारे रिअल-टाइम डेटाबेस सिंक्रोनाइझेशनचा वापर करून, आम्ही कार्यरत पदयात्रा रथ (जसे की महाराष्ट्र भक्ती पदयात्रा, वृंदावन पदयात्रा आणि जगन्नाथ पुरी पदयात्रा) यांचे थेट ट्रॅकिंग, थेट विग्रह दर्शन आणि सुरक्षित व्यास पूजा संदेश प्रदान करतो.",
+                secTechDesc2: "कमी बॅटरी वापरण्यासाठी आमची सिस्टीम ऑप्टिमाइझ केली गेली आहे, जेणेकरून सुदूर ग्रामीण भागातही भक्त अखंडपणे जोडलेले राहू शकतात. सुरक्षित सँडबॉक्स टोकन्स आणि डेटा एन्क्रिप्शन सिस्टीम कोणत्याही प्रकारच्या सुरक्षेच्या त्रुटी दूर ठेवतात.",
+                secCoreTitle: "<div class='section-number'>3</div> पदयात्रा सेवेचे मुख्य स्तंभ",
+                secCoreDesc: "आमचे डिजिटल पोर्टल सक्रियपणे तीर्थयात्रा सेवेच्या तीन मुख्य स्तंभांचे व्यवस्थापन करते: <br><br><b>• हरिनाम संकीर्तन:</b> थेट मार्ग प्रगती प्रदान करणे जेणेकरून स्थानिक भक्त रस्त्यांवर हरे कृष्ण महा-मंत्राच्या सामूहिक संकीर्तनात त्वरित सहभागी होऊ शकतील. <br><br><b>• शास्त्र वितरण:</b> दूरवरच्या गावांमध्ये आणि दुर्गम जिल्ह्यांमध्ये आध्यात्मिक साहित्य आणि भगवद्-गीता यांच्या ऑफलाइन वितरणास प्रोत्साहन देणे आणि ते ट्रॅक करणे. <br><br><b>• महाप्रसाद वितरण:</b> सर्व भाविकांना पवित्र प्रसादाचे मोफत वाटप करणे, ज्यामुळे जागतिक स्तरावर चेतना शुद्ध होण्यास मदत होते.",
+                secCowTitle: "<div class='section-number'>4</div> गो-सेवा आणि बैलांचे प्रशिक्षण",
+                secCowDesc1: "इस्कॉन पदयात्रेचा एक महत्त्वाचा भाग म्हणजे आमची गो-सेवा (गाय संरक्षण) आणि बैल चालित वाहतुकीला प्रोत्साहन देण्याची कटिबद्धता आहे. पर्यावरणाचा -हास होत असलेल्या आधुनिक युगात, पदयात्रा एक आदर्श आणि निसर्गाशी सुसंगत जीवनशैली दाखवून देते. रथाला जोडलेल्या बैलांची काळजी कुटुंबातील सदस्याप्रमाणे घेतली जाते.",
+                secCowDesc2: "वाहतूक आणि शेतीसाठी बैलांच्या वापरावर भर देऊन, पदयात्रा पारंपरिक वैदिक शेती मॉडेलचे महत्त्व पटवून देते. मानवी संस्कृती प्राणी आणि पर्यावरणाचा कोणताही छळ न करता सुखाने जगू शकते, हे पदयात्रेने सिद्ध केले आहे.",
+                secOutreachTitle: "<div class='section-number'>5</div> जागतिक स्वयंसेवा आणि सांस्कृतिक प्रभाव",
+                secOutreachDesc: "गेल्या अनेक दशकांपासून इस्कॉन पदयात्रांचा सांस्कृतिक प्रभाव जागतिक स्तरावर जाणवला आहे. कोट्यवधी लोकांना याद्वारे प्रसाद आणि ग्रंथ मिळाले आहेत. हे पोर्टल आपल्या स्वयंसेवक भक्तांना थेट या चळवळीमध्ये सामील होण्याची आणि समन्वयकांशी संपर्क साधण्याची संधी देते.",
+                footerSupportHead: "<i class='fas fa-shield-alt text-success'></i> तांत्रिक ॲप सहाय्यता",
+                footerSupportDesc: "मोबाईल ॲप्लिकेशन तांत्रिक कॉन्फिगरेशन, डेटाबेस सिंक्रोनाइझेशन विनंती किंवा सिस्टमशी संबंधित चौकशीसाठी, कृपया आमच्या मुख्य सिस्टम आर्किटेक्टशी थेट व्हॉट्सॲपद्वारे संपर्क साधा.",
+                btnWaSupport: "<i class='fab fa-whatsapp'></i> देव संतोष यांच्याशी चॅट करा (फक्त व्हॉट्सॲप - कॉल करू नये)",
+                footerCopyright: "© 2026 इस्कॉन पदयात्रा मंत्रालय. सर्व हक्क राखीव. <br> भक्ती भावाने डिझाइन आणि संचालित."
+            }
+        };
+
+        let activeLanguage = safeStorage.getItem('padyatra_lang') || 'en';
+
+        const dropdownEl = document.getElementById('lang-select-policy');
+        if (dropdownEl) {
+            dropdownEl.value = activeLanguage;
+        }
+
+        function changeLanguage(lang) {
+            activeLanguage = lang;
+            safeStorage.setItem('padyatra_lang', lang);
+            localizeUI();
+        }
+
+        function localizeUI() {
+            const d = aboutDict[activeLanguage];
+            document.getElementById('nav-title').textContent = d.navTitle;
+            document.getElementById('header-title-text').innerHTML = d.headerTitleText;
+            document.getElementById('header-subtitle-text').textContent = d.headerSubtitleText;
+            document.getElementById('badge-doc-id').innerHTML = d.badgeDocId;
+            document.getElementById('badge-date').innerHTML = d.badgeDate;
+            document.getElementById('welcome-text-msg').innerHTML = d.welcomeText;
+            document.getElementById('sec-mission-title').innerHTML = d.secMissionTitle;
+            document.getElementById('sec-mission-desc1').textContent = d.secMissionDesc1;
+            document.getElementById('sec-mission-desc2').textContent = d.secMissionDesc2;
+            document.getElementById('srila-prabhupada-quote').innerHTML = d.srilaPrabhupadaQuote;
+            document.getElementById('sec-tech-title').innerHTML = d.secTechTitle;
+            document.getElementById('sec-tech-desc1').textContent = d.secTechDesc1;
+            document.getElementById('sec-tech-desc2').textContent = d.secTechDesc2;
+            document.getElementById('sec-core-title').innerHTML = d.secCoreTitle;
+            document.getElementById('sec-core-desc').innerHTML = d.secCoreDesc;
+            document.getElementById('sec-cow-title').innerHTML = d.secCowTitle;
+            document.getElementById('sec-cow-desc1').textContent = d.secCowDesc1;
+            document.getElementById('sec-cow-desc2').textContent = d.secCowDesc2;
+            document.getElementById('sec-outreach-title').innerHTML = d.secOutreachTitle;
+            document.getElementById('sec-outreach-desc').textContent = d.secOutreachDesc;
+            document.getElementById('footer-support-head').innerHTML = d.footerSupportHead;
+            document.getElementById('footer-support-desc').textContent = d.footerSupportDesc;
+            document.getElementById('btn-wa-support').innerHTML = d.btnWaSupport;
+            document.getElementById('footer-copyright-text').innerHTML = d.footerCopyright;
+        }
+
+        localizeUI();
+
+        if(localStorage.getItem('theme') === 'dark') {
+            document.body.setAttribute('data-theme', 'dark');
+            document.documentElement.style.setProperty('--card-bg', '#1e293b');
+            document.documentElement.style.setProperty('--bg-color', '#0f172a');
+            document.documentElement.style.setProperty('--text-color', '#f8fafc');
+            document.documentElement.style.setProperty('--text-muted', '#94a3b8');
+            document.documentElement.style.setProperty('--border-color', '#334155');
+        }
+
+        window.onscroll = function() { updateProgressBar() };
+        function updateProgressBar() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+        //]]>
+    </script>
+</body>
+</html>
