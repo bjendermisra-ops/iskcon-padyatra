@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>403 Forbidden | ISKCON Padyatra</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Inter:wght@400;700;900&display=swap');
+
+        :root {
+            --bg-color: #111827;      /* Solid Deep Grey/Blue for high visibility */
+            --card-bg: #1f2937;       /* Lighter for contrast */
+            --text-primary: #ffffff;
+            --text-secondary: #9ca3af;
+            --accent-red: #ef4444;    
+            --gold: #f59e0b;          
+            --border: #374151;
+        }
+
+        /* ANTI-COPY & ANTI-SELECTION CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-user-select: none;  /* Chrome/Safari */
+            -moz-user-select: none;     /* Firefox */
+            -ms-user-select: none;      /* IE10+ */
+            user-select: none;          /* Standard */
+            -webkit-touch-callout: none; /* iOS Safari prevents long press menu */
+            outline: none;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 15px;
+            overflow: hidden; /* Prevents scrolling if not needed */
+        }
+
+        .card {
+            width: 100%;
+            max-width: 480px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 35px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border-top: 5px solid var(--accent-red);
+            position: relative;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--gold);
+            letter-spacing: 2px;
+            opacity: 0.9;
+        }
+
+        h1 {
+            font-size: clamp(26px, 6vw, 34px);
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .desc {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* Diagnostic Terminal Box */
+        .diag-box {
+            background: #000000;
+            border-radius: 10px;
+            padding: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            border: 1px solid #374151;
+            margin-bottom: 25px;
+        }
+
+        .row { display: flex; margin-bottom: 8px; border-bottom: 1px solid #111827; padding-bottom: 4px; }
+        .row:last-child { border: none; }
+        .lab { color: #4b5563; min-width: 110px; font-weight: bold; }
+        .val { color: var(--text-secondary); flex: 1; word-break: break-all; }
+        .red { color: var(--accent-red); font-weight: bold; }
+
+        .status-pulse {
+            display: flex;
+            align-items: center;
+            font-size: 10px;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-red);
+            border-radius: 50%;
+            margin-right: 12px;
+            animation: pulse 1.5s infinite;
+            box-shadow: 0 0 10px var(--accent-red);
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.4; transform: scale(0.9); }
+            50% { opacity: 1; transform: scale(1.1); }
+            100% { opacity: 0.4; transform: scale(0.9); }
+        }
+
+        .footer {
+            margin-top: 35px;
+            font-size: 12px;
+            color: #4b5563;
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+            line-height: 1.6;
+        }
+
+        .footer strong { color: var(--text-secondary); }
+    </style>
+</head>
+<body oncontextmenu="return false;"> <!-- Disables Right Click -->
+
+    <div class="card">
+        <div class="header">
+            <span>HARE KRISHNA</span>
+            <span>NODE_108</span>
+        </div>
+
+        <h1>Access Restricted</h1>
+        
+        <p class="desc">
+            This endpoint is currently under <strong>Administrative Lockdown</strong>. All unauthorized access attempts are being logged by the Padyatra Security Layer.
+        </p>
+
+        <div class="diag-box">
+            <div class="row"><span class="lab">SECURITY</span><span class="val red">ENFORCED</span></div>
+            <div class="row"><span class="lab">PROTOCOL</span><span class="val">SYSTEM_V10.4.RC</span></div>
+            <div class="row"><span class="lab">TRACE_ID</span><span id="trace" style="color:#60a5fa"></span></div>
+            <div class="row"><span class="lab">TIMESTAMP</span><span id="ts"></span></div>
+        </div>
+
+        <div class="status-pulse">
+            <div class="dot"></div> System Monitoring Active
+        </div>
+
+        <div class="footer">
+            Access denied at the gateway. Please contact the <strong>Project Developer</strong> or <strong>Ministry IT Cell</strong> to re-validate your terminal credentials.
+        </div>
+    </div>
+
+    <script>
+        // 1. Dynamic Data Generation
+        function updateSystem() {
+            const now = new Date();
+            const trace = "PY-" + Math.random().toString(36).substring(2, 15).toUpperCase();
+            document.getElementById('trace').innerText = trace;
+            document.getElementById('ts').innerText = now.toISOString().replace('T', ' ').substring(0, 19) + ' UTC';
+        }
+        updateSystem();
+
+        // 2. Extra JavaScript Security Layer
+        
+        // Disable Right Click & Long Press
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        // Disable Keyboard Shortcuts (Ctrl+U, Ctrl+C, Ctrl+Shift+I, etc.)
+        document.onkeydown = function(e) {
+            if (e.ctrlKey && 
+                (e.keyCode === 67 || // C
+                 e.keyCode === 86 || // V
+                 e.keyCode === 85 || // U
+                 e.keyCode === 83 || // S
+                 e.keyCode === 123 || // F12
+                 (e.shiftKey && e.keyCode === 73))) { // Ctrl+Shift+I
+                return false;
+            }
+        };
+
+        // Prevent dragging of any element
+        document.ondragstart = function() { return false; };
+    </script>
+</body>
+</html>
